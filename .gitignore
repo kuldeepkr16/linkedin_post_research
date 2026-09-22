@@ -1,0 +1,56 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local agent/session context
+AGENTS.md
+.claude/settings.local.json
+
+# Output files
+output/
+posts/
+*.json
+
+# Generated dashboard data is intentionally versioned so GitHub Pages can
+# keep a daily history even though raw output/ files stay local/ignored.
+!frontend/data/
+!frontend/data/*.json
+!frontend/data/runs/
+!frontend/data/runs/*.json
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,32 @@
+# LinkedIn Post Generator Dependencies
+# Data Engineering News & Concepts Post Generator
+# All FREE - No paid API keys required!
+
+# HTTP requests
+requests>=2.31.0
+httpx>=0.25.0
+
+# RSS feed parsing
+feedparser>=6.0.10
+
+# Groq API (FREE tier - llama models)
+groq>=0.4.0
+
+# Ollama (local vision: Qwen2.5-VL) — install Ollama from https://ollama.com then: ollama pull qwen2.5vl:7b
+ollama>=0.3.0
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# Date/time handling
+python-dateutil>=2.8.2
+
+# Rich console output
+rich>=13.7.0
+
+# HTML parsing for news content
+beautifulsoup4>=4.12.0
+lxml>=5.1.0
+
+# JSON handling
+orjson>=3.9.0

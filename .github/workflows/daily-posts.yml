@@ -1,0 +1,74 @@
+name: Daily LinkedIn Posts
+
+on:
+  schedule:
+    # 08:00 Asia/Kolkata = 02:30 UTC.
+    - cron: "30 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "linkedin-pages"
+  cancel-in-progress: false
+
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      TZ: Asia/Kolkata
+      AI_PROVIDER: groq
+      GROQ_MODEL: openai/gpt-oss-120b
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate today's drafts
+        run: |
+          python main.py
+          test -n "$(find output -name 'linkedin_posts_*.json' -print -quit)" || {
+            echo "No posts were generated; keeping the previous dashboard unchanged."
+            exit 1
+          }
+
+      - name: Update dashboard data
+        run: python scripts/build_frontend_data.py
+
+      - name: Save generated dashboard history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f frontend/data
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: generate daily LinkedIn drafts"
+            git push
+          fi
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload dashboard
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend
+
+      - name: Deploy dashboard
+        id: deployment
+        uses: actions/deploy-pages@v4

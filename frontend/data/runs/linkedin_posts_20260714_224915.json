@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-07-14T22:49:15.339141",
+  "ai_provider": "claude",
+  "news_posts": [
+    {
+      "post_content": "I came across a tool called Noisia today, and it made me rethink how I test PostgreSQL setups.\n\nIt is a workload generator built specifically to create harmful, chaotic conditions on a Postgres instance.\n\nThink long-running transactions, deadlocks, idle transactions with locks held, and connection exhaustion, all on demand.\n\nMost of us test happy paths.\n\nWe rarely simulate the messy stuff that actually takes production down at 2am.\n\nA few things worth taking from this:\n\n- Chaos testing your database is as valuable as chaos testing your services\n- Idle-in-transaction connections are a silent killer that monitoring often misses\n- Load testing without adversarial scenarios only tells half the story\n\nThe common mistake I see is teams load testing for throughput but never for pathological behavior.\n\nA system that survives 10x traffic can still fall over from one badly behaved connection pool.\n\nHave you ever deliberately broken your own database to see how it recovers?\n\n#PostgreSQL #DataEngineering #DatabaseReliability #SQL",
+      "image_prompt": "Modern data engineering visualization showing a PostgreSQL elephant logo surrounded by chaotic red warning signals and tangled connection lines, dark navy background, glowing red and blue data streams, abstract technical illustration, professional LinkedIn style, no text",
+      "key_topic": "PostgreSQL Chaos Testing",
+      "source_article": "Noisia Harmful Workload Generator for PostgreSQL",
+      "source_url": "https://github.com/lesovsky/noisia/"
+    },
+    {
+      "post_content": "Someone built a neural network entirely in SQL, and it is a genuinely interesting idea once you sit with it.\n\nThe core insight is simple.\n\nA lot of array and tensor operations are secretly relational operations wearing a different costume.\n\nMatrix multiplication, it turns out, can be expressed as a sum-product join followed by a group by.\n\nEven gradient calculations for backpropagation map onto row-wise operations if you set the data model up right.\n\nWhy does this matter for us as data engineers.\n\n- Query engines already solve distributed compute at massive scale\n- Reframing ML workloads as relational ones could reuse decades of database optimization\n- It blurs the line between the analytics engine and the ML platform\n\nThe part I find most compelling is the logical versus physical layer separation.\n\nIf a neural network is just a series of relations, your existing distributed SQL engine might already know how to scale it.\n\nDo you think SQL engines will eventually absorb more of the ML workload, or will they stay separate stacks?\n\n#SQL #MachineLearning #DataEngineering #Databases",
+      "image_prompt": "Abstract visualization of a neural network diagram morphing into interconnected database tables and SQL query trees, glowing blue and teal gradient on dark background, geometric nodes and edges, clean minimalist tech aesthetic, professional LinkedIn style, no text",
+      "key_topic": "SQL Neural Networks",
+      "source_article": "Show HN I implemented a neural network in SQL",
+      "source_url": "https://github.com/xqlsystems/xarray-sql/blob/claude/xarray-sql-mnist-demo/benchmarks/nn.py"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "Ever had a QuickSight dashboard that worked fine in dev but could not reach its data source in production.\n\nVPC connectivity is usually the culprit.\n\nQuickSight runs outside your VPC by default, which means it cannot see private resources like an RDS instance or an internal Redshift cluster.\n\nTo fix that, you create a VPC connection inside QuickSight that uses elastic network interfaces to reach into your private subnets.\n\nA few things that trip people up:\n\n- The security group attached to the ENI needs explicit inbound rules for QuickSight, not just your app servers\n- Each VPC connection is tied to specific subnets, so multi-AZ setups need extra planning\n- DNS resolution inside the VPC has to actually resolve your data source hostname, not just the IP\n\nThe common mistake is assuming a public data source and a VPC-connected one behave the same way during testing.\n\nThey do not, and that gap only shows up once you deploy for real users.\n\nHave you run into VPC connectivity issues with your BI tools before?\n\n#QuickSight #AWS #DataEngineering #CloudSecurity",
+      "image_prompt": "Clean technical diagram style illustration of a VPC network with subnets, security groups, and a dashboard icon connecting through a secure tunnel, blue and purple gradient, dark background with glowing connection lines, professional LinkedIn style, no text",
+      "key_topic": "AWS QuickSight: VPC Connectivity and Security",
+      "topic": "AWS QuickSight",
+      "concept": "VPC Connectivity and Security",
+      "post_type": "concept"
+    },
+    {
+      "post_content": "Batch ETL jobs running every few hours used to be good enough.\n\nNow half the systems I work with expect near real-time data, and that is where Change Data Capture comes in.\n\nCDC watches your source database's transaction log and streams every insert, update, and delete as it happens, instead of re-scanning entire tables on a schedule.\n\nA few patterns worth knowing:\n\n- Log-based CDC reads the database's write-ahead log directly, so it does not add query load to your source system\n- Trigger-based CDC is easier to set up but can slow down writes on busy tables\n- Downstream consumers need idempotent handling, since replays and retries are inevitable in any streaming setup\n\nThe common mistake is treating CDC as just a faster ETL.\n\nIt is really a different mental model, your pipeline now reacts to events instead of pulling snapshots.\n\nThat shift affects everything from schema evolution to how you think about data freshness.\n\nHave you moved a pipeline from batch to CDC, and what broke first?\n\n#CDC #DataEngineering #StreamProcessing #ETL",
+      "image_prompt": "Modern illustration of a database transaction log streaming into multiple downstream systems as glowing data particles, blue and orange gradient, abstract flow diagram, dark background, clean minimalist tech style, professional LinkedIn aesthetic, no text",
+      "key_topic": "Data Engineering: CDC (Change Data Capture) Patterns",
+      "topic": "Data Engineering",
+      "concept": "CDC (Change Data Capture) Patterns",
+      "post_type": "concept"
+    }
+  ]
+}

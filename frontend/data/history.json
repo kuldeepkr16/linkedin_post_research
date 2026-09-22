@@ -1,0 +1,59 @@
+{
+  "updated_at": "2026-09-22T12:56:22.796899+00:00",
+  "runs": [
+    {
+      "generated_at": "2026-09-22T18:00:26.567330",
+      "ai_provider": "groq",
+      "news_count": 1,
+      "concept_count": 2,
+      "total_count": 3,
+      "path": "data/runs/linkedin_posts_20260922_180101.json",
+      "filename": "linkedin_posts_20260922_180101.json"
+    },
+    {
+      "generated_at": "2026-07-14T22:51:09.615415",
+      "ai_provider": "claude",
+      "news_count": 2,
+      "concept_count": 2,
+      "total_count": 4,
+      "path": "data/runs/linkedin_posts_20260714_225109.json",
+      "filename": "linkedin_posts_20260714_225109.json"
+    },
+    {
+      "generated_at": "2026-07-14T22:49:15.339141",
+      "ai_provider": "claude",
+      "news_count": 2,
+      "concept_count": 2,
+      "total_count": 4,
+      "path": "data/runs/linkedin_posts_20260714_224915.json",
+      "filename": "linkedin_posts_20260714_224915.json"
+    },
+    {
+      "generated_at": "2026-07-14T22:28:27.903205",
+      "ai_provider": "groq",
+      "news_count": 2,
+      "concept_count": 2,
+      "total_count": 4,
+      "path": "data/runs/linkedin_posts_20260714_222931.json",
+      "filename": "linkedin_posts_20260714_222931.json"
+    },
+    {
+      "generated_at": "2026-01-02T22:31:11.478741",
+      "ai_provider": "groq",
+      "news_count": 2,
+      "concept_count": 2,
+      "total_count": 4,
+      "path": "data/runs/linkedin_posts_20260102_223128.json",
+      "filename": "linkedin_posts_20260102_223128.json"
+    },
+    {
+      "generated_at": "2026-01-02T22:28:34.771312",
+      "ai_provider": "groq",
+      "news_count": 2,
+      "concept_count": 2,
+      "total_count": 4,
+      "path": "data/runs/linkedin_posts_20260102_222853.json",
+      "filename": "linkedin_posts_20260102_222853.json"
+    }
+  ]
+}

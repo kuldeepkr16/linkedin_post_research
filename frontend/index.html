@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1020" />
+    <title>LinkedIn Morning Review</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">DATA ENGINEERING · MORNING REVIEW</p>
+          <h1>Pick today’s LinkedIn post.</h1>
+          <p class="subtle">
+            Fresh news and educational drafts, generated every morning for a quick review.
+          </p>
+        </div>
+        <div class="run-picker">
+          <label for="runSelect">Generation</label>
+          <select id="runSelect" aria-label="Select generation date"></select>
+        </div>
+      </header>
+
+      <section class="summary" aria-label="Generation summary">
+        <div class="stat"><span id="totalCount">—</span><small>drafts</small></div>
+        <div class="stat"><span id="newsCount">—</span><small>news</small></div>
+        <div class="stat"><span id="conceptCount">—</span><small>concepts</small></div>
+        <div class="stat provider"><span id="providerName">—</span><small>provider</small></div>
+      </section>
+
+      <section class="toolbar" aria-label="Post filters">
+        <div class="filters" role="group" aria-label="Filter posts">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="news">News</button>
+          <button class="filter" data-filter="concept">Concepts</button>
+          <button class="filter" data-filter="ready">Ready</button>
+        </div>
+        <p id="generatedAt" class="timestamp"></p>
+      </section>
+
+      <section id="posts" class="post-grid" aria-live="polite"></section>
+      <div id="emptyState" class="empty" hidden>No drafts match this filter.</div>
+
+      <footer>
+        Review decisions are saved in this browser. The generated post history comes from GitHub.
+      </footer>
+    </main>
+
+    <template id="postTemplate">
+      <article class="post-card">
+        <div class="card-top">
+          <div class="meta-row">
+            <span class="type-badge"></span>
+            <span class="topic"></span>
+          </div>
+          <span class="review-badge">Unreviewed</span>
+        </div>
+        <h2 class="post-title"></h2>
+        <div class="post-content"></div>
+        <details class="image-details">
+          <summary>Image prompt</summary>
+          <p class="image-prompt"></p>
+        </details>
+        <div class="actions">
+          <button class="primary copy-button">Copy post</button>
+          <a class="source-link" target="_blank" rel="noopener noreferrer">Open source</a>
+          <button class="status-button ready-button">Mark ready</button>
+          <button class="status-button skip-button">Skip</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
