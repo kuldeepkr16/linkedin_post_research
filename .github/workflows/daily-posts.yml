@@ -2,8 +2,9 @@ name: Daily LinkedIn Posts
 
 on:
   schedule:
-    # 08:00 Asia/Kolkata = 02:30 UTC.
-    - cron: "30 2 * * *"
+    # Run daily at 08:05 India time. Using an off-minute reduces scheduler congestion.
+    - cron: "5 8 * * *"
+      timezone: "Asia/Kolkata"
   workflow_dispatch:
 
 permissions:
