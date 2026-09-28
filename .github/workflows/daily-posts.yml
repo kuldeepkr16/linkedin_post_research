@@ -2,8 +2,8 @@ name: Daily LinkedIn Posts
 
 on:
   schedule:
-    # GitHub Actions cron schedules use UTC. 02:35 UTC is 08:05 Asia/Kolkata.
-    - cron: "35 2 * * *"
+    # GitHub Actions cron schedules use UTC. 02:30 UTC is 08:00 Asia/Kolkata.
+    - cron: "30 2 * * *"
   workflow_dispatch:
 
 permissions:
