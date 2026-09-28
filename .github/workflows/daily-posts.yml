@@ -2,9 +2,8 @@ name: Daily LinkedIn Posts
 
 on:
   schedule:
-    # Run daily at 08:05 India time. Using an off-minute reduces scheduler congestion.
-    - cron: "5 8 * * *"
-      timezone: "Asia/Kolkata"
+    # GitHub Actions cron schedules use UTC. 02:35 UTC is 08:05 Asia/Kolkata.
+    - cron: "35 2 * * *"
   workflow_dispatch:
 
 permissions:
