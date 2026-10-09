@@ -5,6 +5,9 @@ on:
     # GitHub Actions cron schedules use UTC. 02:31 UTC is 08:01 Asia/Kolkata.
     # Changing the cron value forces GitHub to replace the stale 08:05 UTC schedule.
     - cron: "31 2 * * *"
+  push:
+    branches: [main]
+    paths: [.github/manual-trigger]
   workflow_dispatch:
 
 permissions:
