@@ -2,9 +2,9 @@ name: Daily LinkedIn Posts
 
 on:
   schedule:
-    # GitHub Actions cron schedules use UTC. 02:30 UTC is 08:00 Asia/Kolkata.
-    # Re-registered on 2026-10-08 after GitHub retained the previous 08:05 UTC schedule.
-    - cron: "30 2 * * *"
+    # GitHub Actions cron schedules use UTC. 02:31 UTC is 08:01 Asia/Kolkata.
+    # Changing the cron value forces GitHub to replace the stale 08:05 UTC schedule.
+    - cron: "31 2 * * *"
   workflow_dispatch:
 
 permissions:
