@@ -2,9 +2,8 @@ name: Morning LinkedIn Posts
 
 on:
   schedule:
-    # GitHub Actions cron schedules use UTC. 02:31 UTC is 08:01 Asia/Kolkata.
-    # This workflow has a new file identity so GitHub registers this schedule fresh.
-    - cron: "31 2 * * *"
+    # Temporary live scheduler test: 13:29 UTC is 18:59 Asia/Kolkata.
+    - cron: "29 13 * * *"
   push:
     branches: [main]
     paths: [.github/manual-trigger]
