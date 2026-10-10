@@ -1,9 +1,9 @@
-name: Daily LinkedIn Posts
+name: Morning LinkedIn Posts
 
 on:
   schedule:
     # GitHub Actions cron schedules use UTC. 02:31 UTC is 08:01 Asia/Kolkata.
-    # Changing the cron value forces GitHub to replace the stale 08:05 UTC schedule.
+    # This workflow has a new file identity so GitHub registers this schedule fresh.
     - cron: "31 2 * * *"
   push:
     branches: [main]
