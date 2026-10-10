@@ -1,6 +1,15 @@
 {
-  "updated_at": "2026-10-09T03:59:36.310712+00:00",
+  "updated_at": "2026-10-10T08:43:21.599089+00:00",
   "runs": [
+    {
+      "generated_at": "2026-10-10T14:13:02.667897",
+      "ai_provider": "groq",
+      "news_count": 2,
+      "concept_count": 2,
+      "total_count": 4,
+      "path": "data/runs/linkedin_posts_20261010_141321.json",
+      "filename": "linkedin_posts_20261010_141321.json"
+    },
     {
       "generated_at": "2026-10-09T09:29:05.331490",
       "ai_provider": "groq",
