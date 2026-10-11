@@ -2,8 +2,8 @@ name: Morning LinkedIn Posts
 
 on:
   schedule:
-    # GitHub Actions cron schedules use UTC. 02:31 UTC is 08:01 Asia/Kolkata.
-    - cron: "31 2 * * *"
+    # Temporary live test: 05:59 UTC is 11:29 Asia/Kolkata.
+    - cron: "59 5 * * *"
   push:
     branches: [main]
     paths: [.github/manual-trigger]
