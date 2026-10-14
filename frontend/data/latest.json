@@ -1,14 +1,15 @@
 {
-  "generated_at": "2026-10-13T09:16:30.594728",
+  "generated_at": "2026-10-14T07:36:04.525613",
   "ai_provider": "groq",
-  "news_posts": [
+  "news_posts": [],
+  "concept_posts": [
     {
-      "post_content": "Ever wondered why your PostgreSQL connections sometimes feel like a traffic jam?\n\nI’ve been testing PgBouncer and Amazon RDS Proxy side by side on a recent project.\n\nPgBouncer is a lightweight connection pooler that lives right on your EC2 or container.\n\nIt keeps a small memory footprint and works well when you control the network.\n\nRDS Proxy,\n on the other hand,\n is a managed service that sits in front of your RDS instance.\n\nIt handles failover automatically and integrates with IAM for credentials.\n\nBoth solve the same problem but with different trade‑offs.\n\nHere are a few things I learned:\n\n- PgBouncer gives you raw performance and fine‑grained control,\n but you need to manage scaling and health checks yourself.\n\n- RDS Proxy removes operational overhead and provides built‑in failover,\n though it adds a little latency and cost.\n\n- Choosing the right tool depends on how much you value simplicity versus maximum throughput.\n\nWhat’s your experience with connection pooling in PostgreSQL?\n#PostgreSQL\n#DataEngineering\n#CloudComputing\n#AWS",
-      "image_prompt": "A professional illustration showing a split screen with PgBouncer on the left and Amazon RDS Proxy on the right, each represented by stylized server icons, connected to PostgreSQL databases, with subtle data flow lines, modern flat design, muted tech colors, suitable for a LinkedIn article about connection pooling.",
-      "key_topic": "PgBouncer vs RDS Proxy",
-      "source_article": "Understanding the differences between PgBouncer and Amazon RDS Proxy for PostgreSQL connection pooling - Amazon Web Services AWS",
-      "source_url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPVERxT0JMcjUybjhaMWRqa3pObHhTd2hicjUwS1Y2NE04bDZELS1XeElua3Y0QXJPSG15OENTT2xpdkFLaHJFLVZ5c2RicGJOOFIzTnI5NThzLW8zcndpZnRoc1FfNVNCUVBRZmRfaXJ0WmJ6N0lRejJMVlZmdXY3aXJaWl9qWWtGLWpVNGhINV9VMVFPQjhlVWpiMzZXb0RfVzA0RFQ5SHZlQ0tqaGZzcFlnWUpldHFJMzllVktiNFVUY0NHWlpNY0w0dlR5X3E1Zk40Zk11WWk?oc=5"
+      "post_content": "Ever tried searching a product description table with LIKE and ended up scanning millions of rows?\nI felt the same until I discovered PostgreSQL's full‑text search.\nIt lets you index textual data the way search engines do,\nso queries become lightning fast.\n\nImagine you have a table articles(id, title, body) and you want to find anything about \"data pipelines\".\nYou create a tsvector column from title and body,\nadd a GIN index,\nthen query with to_tsquery('data & pipeline').\nPostgreSQL does the heavy lifting,\nranking results by relevance.\n\nKey takeaways:\n- Use tsvector and GIN indexes to make searches efficient.\n- Leverage language dictionaries to handle stemming and stop words.\n- Combine ts_rank_cd with ORDER BY to surface the most relevant rows.\n\nCommon mistake: forgetting to update the tsvector column when the source text changes,\nwhich leads to stale search results.\n\nWhat’s the most surprising thing you’ve learned about full‑text search in PostgreSQL?\n\n#PostgreSQL #FullTextSearch #DataEngineering #SQL",
+      "image_prompt": "A modern, clean illustration showing a PostgreSQL elephant mascot holding a magnifying glass over a stack of text documents. The documents transform into colorful tokens that flow into a GIN index icon shaped like a grid. In the background, a subtle search bar with the words 'data pipelines' typed in. The style is flat vector with soft pastel colors, emphasizing clarity and tech professionalism.",
+      "key_topic": "PostgreSQL: Full-Text Search Capabilities",
+      "topic": "PostgreSQL",
+      "concept": "Full-Text Search Capabilities",
+      "post_type": "concept"
     }
-  ],
-  "concept_posts": []
+  ]
 }
