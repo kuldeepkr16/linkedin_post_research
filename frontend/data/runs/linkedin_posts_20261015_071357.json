@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-10-15T07:13:35.795765",
+  "ai_provider": "groq",
+  "news_posts": [],
+  "concept_posts": [
+    {
+      "post_content": "Ever found yourself waiting for a table to unlock,\n wondering why the query is stuck?\n\nIn SQL,\n locks are like traffic signals for data.\n\nWhen a session reads or writes,\n it places a lock to prevent other sessions from making conflicting changes.\n\nA shared lock lets multiple reads happen together,\n but blocks writes.\n\nAn exclusive lock stops everyone else until the transaction finishes.\n\nImagine two teammates editing the same spreadsheet cell.\n\nOne locks it,\n the other sees a “locked” indicator and waits.\n\nThat’s the same idea in a database.\n\nKey takeaways:\n\n- Choose the right isolation level to balance consistency and concurrency.\n\n- Keep transactions short to release locks quickly.\n\n- Use row‑level locks when possible instead of table‑level locks.\n\nCommon mistake: Leaving a transaction open longer than needed,\n which holds locks and creates bottlenecks for everyone.\n\nWhat’s the most frustrating lock you’ve run into,\n and how did you solve it?\n\n#SQL #DatabaseLocks #DataEngineering #Performance",
+      "image_prompt": "",
+      "recovered": true,
+      "topic": "SQL",
+      "concept": "Database Locking Mechanisms",
+      "post_type": "concept"
+    }
+  ]
+}
