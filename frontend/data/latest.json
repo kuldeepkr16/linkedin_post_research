@@ -1,22 +1,14 @@
 {
-  "generated_at": "2026-10-18T06:56:28.724263",
+  "generated_at": "2026-10-19T07:03:19.456434",
   "ai_provider": "groq",
-  "news_posts": [
-    {
-      "post_content": "Ever tried to spin up a backend without writing a single line of code?\n\nI recently came across Xano, a visual API builder that lets you design endpoints on top of a PostgreSQL database.\n\nWhat caught my eye is how quickly you can prototype data models, set up relationships, and expose RESTful APIs without worrying about server configs.\n\nIn my own experiments, I connected Xano to a small analytics pipeline and saved days of setup time.\n\nHere are a few things I found useful:\n\n- The drag‑and‑drop interface makes schema changes visible instantly, so you can iterate with the whole team.\n\n- Built‑in authentication and role‑based permissions let you secure APIs without writing auth code.\n\n- You can still run custom SQL queries when you need fine‑grained control, keeping the power of PostgreSQL at your fingertips.\n\nIf you’re juggling data pipelines and need a fast way to expose data to front‑end apps, give Xano a try.\n\nDo you think visual API tools will replace traditional backend coding in the next few years?\n\n#NoCode #Backend #APIDevelopment #PostgreSQL",
-      "image_prompt": "A modern developer workspace with a sleek laptop displaying a visual API builder interface, colorful flowcharts connecting PostgreSQL tables, minimalist design, soft natural lighting, realistic style, high detail.",
-      "key_topic": "Visual API",
-      "source_article": "Xano  Backend Development Platform, Visual API Building  PostgreSQL Database - Quasa.io",
-      "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxONTF2eUcxZVdXeGgyNjdfSkJVMHR0SHpPNUJtTUV2c3dOM1lFckZOR01qZkExbUlkbWxBZmpPemx3QTRuR1QybkxIS3RUa1J0VE1rWmFqeFhhWGYtaWM2UldEUWEwclBTWXI1RlJzdG5QLXVCd2FzUW1YZEhaSVNHTFpvYnN2N3FjUE12ZkE4M3REOFF6NFJMZFJwbEo?oc=5"
-    }
-  ],
+  "news_posts": [],
   "concept_posts": [
     {
-      "post_content": "Ever tried to connect QuickSight to a data source in a private subnet and hit a wall?\n\nI ran into that last month when I needed to pull data from an RDS instance inside our VPC.\n\nQuickSight can talk to resources in a VPC,\n but only if you set up VPC connectivity correctly.\n\nThink of it like a private tunnel that lets QuickSight’s managed compute nodes reach your databases without exposing them to the internet.\n\nIn our case we created a VPC endpoint for QuickSight,\n attached it to the same subnet as the RDS,\n and granted the QuickSight service role permission to the security group.\n\nKey takeaways:\n\n- Use a VPC endpoint or a private link to keep traffic inside AWS.\n- Align security groups so that QuickSight’s ENIs are allowed inbound on the DB port.\n- Enable encryption in transit for extra safety.\n\nA common mistake is opening the database to 0.0.0.0/0 in the security group,\n thinking it’s easier.\n\nThat instantly defeats the purpose of a private VPC.\n\nWhat’s your go‑to pattern for securing QuickSight connections?\n\n#AWS #QuickSight #VPC #DataEngineering",
-      "image_prompt": "A clean, professional illustration showing AWS QuickSight icons connecting through a VPC endpoint (represented as a secure tunnel) to an Amazon RDS database inside a private subnet. The diagram highlights the VPC boundary, security group rules, and encrypted data flow arrows. Use a simple flat design with corporate colors, no text, and a focus on clarity for a technical audience.",
-      "key_topic": "AWS QuickSight: VPC Connectivity and Security",
-      "topic": "AWS QuickSight",
-      "concept": "VPC Connectivity and Security",
+      "post_content": "Ever wondered why your dashboard feels a step behind the latest transaction?\n\nIt usually means the data pipeline is batch‑oriented rather than real‑time.\n\nReal‑time analytics architecture is all about moving data from source to insight in seconds instead of minutes or hours.\n\nThink of an e‑commerce site that wants to flag fraudulent orders as soon as they happen.\n\nThe order event streams into a message broker like Kafka,\n a lightweight processor such as Flink enriches it,\n and the result is pushed to a dashboard and a fraud‑score service instantly.\n\nKey points to remember:\n\n- Ingest,\n process,\n and serve data within a single pipeline that can scale horizontally.\n- Keep state minimal and use windowed operations to avoid unbounded memory growth.\n- Monitor latency at each stage,\n not just throughput.\n\nA common mistake is trying to bolt a real‑time layer onto an existing batch system without redesigning data contracts,\n which leads to data skew and missed alerts.\n\nWhat real‑time challenge have you tackled recently?\n\n#DataEngineering #RealTimeAnalytics #Streaming #TechTalk",
+      "image_prompt": "A modern data engineering workspace showing a real-time analytics pipeline. On the left, a streaming source icon (e.g., Kafka) feeding into a processing engine (e.g., Flink) represented by gears in motion. Data flows as glowing lines to a dashboard screen displaying live metrics and alerts. The scene is clean, professional, with subtle blue and gray tones, high detail, and a sense of speed and immediacy. Include subtle background elements like code snippets and network diagrams to emphasize a tech environment.",
+      "key_topic": "Data Engineering: Real-time Analytics Architecture",
+      "topic": "Data Engineering",
+      "concept": "Real-time Analytics Architecture",
       "post_type": "concept"
     }
   ]
