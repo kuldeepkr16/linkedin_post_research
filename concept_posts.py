@@ -69,6 +69,8 @@ CRITICAL RULES:
 - Keep paragraphs short (1-2 sentences each)
 - Sound like you're explaining to a colleague, not lecturing
 - Use simple everyday language
+- Do not invent first-person experience, projects, benchmarks, or claims about "my team"
+- Clearly label any scenario as an example
 - Do not include hashtags
 
 Also create an image prompt for Nano Banana AI image generator.

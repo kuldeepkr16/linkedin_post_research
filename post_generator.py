@@ -43,6 +43,8 @@ CRITICAL RULES:
 - Add line breaks after sentences for readability
 - Keep paragraphs short (1-2 sentences each)
 - Sound human, not robotic or marketing-like
+- Do not invent first-person experience, tests, benchmarks, or claims about "my team"
+- If you use a scenario, clearly present it as an example rather than something you personally did
 - Do not include hashtags
 
 Also generate an image prompt for Nano Banana AI image generator.
@@ -101,7 +103,7 @@ It is the decision or practice you can apply after reading it."""
         
         variations = [
             "Open with a direct practical lesson, then explain the evidence.",
-            "Open with a concrete work scenario and use a short contrast structure.",
+            "Open with a clearly hypothetical work scenario and use a short contrast structure.",
             "Open with a common mistake, then show a better approach without using a question hook.",
         ]
         for index, article in enumerate(articles[:count]):
@@ -143,6 +145,7 @@ CRITICAL RULES:
 - Add line breaks after sentences for readability
 - Keep paragraphs short (1-2 sentences each)
 - Use simple language and define unfamiliar terms
+- Do not invent first-person experience, tests, benchmarks, or claims about "my team"
 - Mention the source naturally once for context
 - End with a specific recommendation or concise lesson; a question is optional
 - Do not include hashtags
