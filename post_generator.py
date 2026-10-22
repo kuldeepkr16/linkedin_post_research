@@ -6,6 +6,7 @@ Uses FREE AI (Groq/Ollama) to generate engaging LinkedIn posts from news
 from typing import List, Dict
 from ai_providers import get_ai_provider, generate_with_json
 from config import POST_STYLE
+from content_utils import clean_post_content
 
 
 class LinkedInPostGenerator:
@@ -14,7 +15,7 @@ class LinkedInPostGenerator:
     def __init__(self):
         self.provider = get_ai_provider()
     
-    def generate_news_post(self, article: Dict) -> Dict:
+    def generate_news_post(self, article: Dict, variation: str = "direct lesson") -> Dict:
         """Generate a LinkedIn post based on a news article"""
         prompt = f"""
 You are a data engineering professional sharing insights on LinkedIn.
@@ -28,23 +29,27 @@ ARTICLE DESCRIPTION: {article.get('description', '')}
 ARTICLE CONTENT: {article.get('content', '')[:1000]}
 SOURCE: {article.get('source', '')}
 
+VARIATION FOR THIS POST: {variation}
+
 Write a LinkedIn post that:
 1. Sounds natural and conversational, like talking to a friend
 2. Shares your perspective on this news
 3. Provides practical value to data professionals
 4. Uses simple language, no jargon
+5. Uses the requested variation instead of a generic question-led opening
 
 CRITICAL RULES:
 - NO emojis or emoticons anywhere in the post
 - Add line breaks after sentences for readability
 - Keep paragraphs short (1-2 sentences each)
 - Sound human, not robotic or marketing-like
+- Do not include hashtags
 
 Also generate an image prompt for Nano Banana AI image generator.
 
 IMPORTANT: Respond in valid JSON format only:
 {{
-    "post_content": "The LinkedIn post text with NO emojis, proper line breaks, and hashtags at end",
+    "post_content": "The LinkedIn post text with NO emojis, no hashtags, and proper line breaks",
     "image_prompt": "Detailed prompt for Nano Banana image generation",
     "key_topic": "Main topic in 2-3 words"
 }}
@@ -56,7 +61,8 @@ IMPORTANT: Respond in valid JSON format only:
         
         if result.get("template_mode"):
             return self._generate_template_post(article)
-        
+
+        result["post_content"] = clean_post_content(result.get("post_content", ""))
         result["source_article"] = article.get("title", "")
         result["source_url"] = article.get("url", "")
         return result
@@ -75,9 +81,8 @@ Here's why it matters for data professionals:
 - [Add a practical takeaway]
 - [Add what you think we should do about it]
 
-What's your take on this?
-
-#DataEngineering #SQL #Analytics"""
+The useful part is not the announcement itself.
+It is the decision or practice you can apply after reading it."""
         
         image_prompt = f"Modern data engineering visualization, professional tech aesthetic, blue and white color scheme, abstract data flow patterns, clean minimalist design for LinkedIn - topic: {title}"
         
@@ -94,9 +99,14 @@ What's your take on this?
         """Generate multiple posts from a list of articles"""
         posts = []
         
-        for article in articles[:count]:
+        variations = [
+            "Open with a direct practical lesson, then explain the evidence.",
+            "Open with a concrete work scenario and use a short contrast structure.",
+            "Open with a common mistake, then show a better approach without using a question hook.",
+        ]
+        for index, article in enumerate(articles[:count]):
             print(f"📝 Generating post for: {article.get('title', '')[:50]}...")
-            post = self.generate_news_post(article)
+            post = self.generate_news_post(article, variation=variations[index % len(variations)])
             if post.get("post_content"):
                 posts.append(post)
         
@@ -109,34 +119,40 @@ You are a technology professional sharing a thoughtful update on LinkedIn.
 
 {POST_STYLE}
 
-Create a LinkedIn post about this current AI or LLM news:
+Use this current AI or LLM news as source material for an educational LinkedIn post:
 
 ARTICLE TITLE: {article.get('title', '')}
 ARTICLE DESCRIPTION: {article.get('description', '')}
 ARTICLE CONTENT: {article.get('content', '')[:1000]}
 SOURCE: {article.get('source', '')}
 
+The post must teach a durable idea that readers can apply after the headline is old.
+Choose the strongest learning angle from the source, such as architecture, evaluation,
+security, cost, model selection, data design, governance, or implementation trade-offs.
+
 Write a post that:
-1. Clearly explains what happened
-2. Explains why it matters to people working with AI, software, or data
-3. Separates confirmed facts from your interpretation
-4. Gives 2-3 practical takeaways
-5. Avoids hype, unsupported claims, and generic statements
+1. Opens with the lesson or problem, not the announcement
+2. Uses the news in no more than two sentences as a concrete example
+3. Explains the underlying concept in simple terms
+4. Includes a practical framework, checklist, or worked example
+5. Separates confirmed facts from interpretation
+6. Avoids hype, unsupported claims, and generic statements
 
 CRITICAL RULES:
 - NO emojis or emoticons anywhere in the post
 - Add line breaks after sentences for readability
 - Keep paragraphs short (1-2 sentences each)
 - Use simple language and define unfamiliar terms
-- Mention the source naturally
-- End with a relevant question
-- Use 3-4 relevant hashtags, including #AI or #LLM
+- Mention the source naturally once for context
+- End with a specific recommendation or concise lesson; a question is optional
+- Do not include hashtags
+- Do not read like a news report or announcement summary
 
 Also generate an image prompt for Nano Banana AI image generator.
 
 IMPORTANT: Respond in valid JSON format only:
 {{
-    "post_content": "The LinkedIn post text with proper line breaks and hashtags at end",
+    "post_content": "An educational LinkedIn post with no hashtags",
     "image_prompt": "Detailed prompt for Nano Banana image generation",
     "key_topic": "Main AI or LLM topic in 2-4 words"
 }}
@@ -145,13 +161,42 @@ IMPORTANT: Respond in valid JSON format only:
         result = generate_with_json(self.provider, prompt, system_prompt)
 
         if result.get("template_mode"):
-            result = self._generate_template_post(article)
+            result = self._generate_template_ai_learning_post(article)
 
+        result["post_content"] = clean_post_content(result.get("post_content", ""))
         result["source_article"] = article.get("title", "")
         result["source_url"] = article.get("url", "")
         result["post_type"] = "ai_news"
         result["content_category"] = "AI / LLM"
         return result
+
+    def _generate_template_ai_learning_post(self, article: Dict) -> Dict:
+        """Create an educational AI framework when a model is unavailable."""
+        title = article.get("title", "Current AI development")
+        post_content = f"""A useful way to evaluate any AI announcement is to look past the headline.
+
+The current example is: {title}
+
+Use three questions to turn that update into something practical:
+
+1. What capability actually changed?
+Separate a new technical ability from a pricing, packaging, or partnership change.
+
+2. What changes in the system design?
+Check the effect on data flow, latency, security boundaries, model portability, and operational cost.
+
+3. What evidence would justify adoption?
+Define a small evaluation with representative data, a baseline, quality measures, and a failure threshold.
+
+This prevents a team from rebuilding around every headline.
+The durable skill is learning how to test an AI claim against your own workload before making an architecture decision."""
+
+        return {
+            "post_content": clean_post_content(post_content),
+            "image_prompt": "A clean three-step AI evaluation framework showing capability, architecture, and evidence, professional minimalist LinkedIn visual, no text",
+            "key_topic": "Evaluating AI announcements",
+            "template_mode": True,
+        }
 
     def generate_batch_ai_news_posts(self, articles: List[Dict], count: int = 1) -> List[Dict]:
         """Generate a small dedicated batch of AI/LLM news posts."""

@@ -8,12 +8,18 @@ the GitHub Pages frontend can load directly.
 from __future__ import annotations
 
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from content_utils import clean_post_content
+
 OUTPUT_DIR = ROOT / "output"
 DATA_DIR = ROOT / "frontend" / "data"
 RUNS_DIR = DATA_DIR / "runs"
@@ -42,6 +48,8 @@ def sanitize_run(data: dict) -> dict:
             # post itself after a model response exceeded its output limit.
             if post.get("raw") and content.lstrip().startswith("{"):
                 continue
+            post = dict(post)
+            post["post_content"] = clean_post_content(content)
             posts.append(post)
         cleaned[group] = posts
     return cleaned

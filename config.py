@@ -190,12 +190,13 @@ Your writing style for LinkedIn posts should be:
 - Use short paragraphs with line breaks after each sentence
 - Add a new line after periods and commas for readability
 - NEVER use emojis or emoticons - keep it clean and professional
-- Start with a relatable hook or interesting observation
-- Share practical insights from real experience
-- Include 2-3 key takeaways as bullet points
-- End with a simple question to encourage discussion
+- Vary the opening: use a direct lesson, a concrete scenario, a surprising fact, a mistake, or a contrast
+- Do not begin with "Ever", "Have you ever", "Did you ever", or another generic question
+- Do not invent personal experience; use a concrete example when experience is not supplied
+- Vary the structure: bullets are optional, and not every post should use "key takeaways"
+- Vary the ending: use a recommendation, a concise lesson, a reflective statement, or an occasional specific question
 - Keep posts between 150-250 words
-- Include 3-4 relevant hashtags at the end (no emojis in hashtags)
+- Do not include hashtags anywhere
 - Sound like a human sharing knowledge, not a marketing post
 """
 

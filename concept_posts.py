@@ -8,6 +8,7 @@ import random
 from typing import List, Dict
 from ai_providers import get_ai_provider, generate_with_json
 from config import POST_STYLE, CONCEPT_TOPICS
+from content_utils import clean_post_content
 
 
 class ConceptPostGenerator:
@@ -42,7 +43,7 @@ class ConceptPostGenerator:
         
         return selected
     
-    def generate_concept_post(self, topic_name: str, concept: str) -> Dict:
+    def generate_concept_post(self, topic_name: str, concept: str, variation: str = "worked example") -> Dict:
         """Generate an educational LinkedIn post about a specific concept"""
         prompt = f"""
 You are a data engineering professional sharing knowledge on LinkedIn.
@@ -53,12 +54,14 @@ Create a simple educational LinkedIn post about this {topic_name} concept:
 
 CONCEPT: {concept}
 
+VARIATION FOR THIS POST: {variation}
+
 Your post should:
-1. Start with a relatable observation or question
+1. Use the requested opening and structure; do not start with a generic question
 2. Explain the concept in simple terms with a practical example
 3. Share 2-3 key points as bullet points
 4. Mention a common mistake to avoid
-5. End with a simple question
+5. End with a useful rule, recommendation, or a specific question
 
 CRITICAL RULES:
 - NO emojis or emoticons anywhere in the post
@@ -66,12 +69,13 @@ CRITICAL RULES:
 - Keep paragraphs short (1-2 sentences each)
 - Sound like you're explaining to a colleague, not lecturing
 - Use simple everyday language
+- Do not include hashtags
 
 Also create an image prompt for Nano Banana AI image generator.
 
 IMPORTANT: Respond in valid JSON format only:
 {{
-    "post_content": "The LinkedIn post text with NO emojis, proper line breaks, and hashtags at end",
+    "post_content": "The LinkedIn post text with NO emojis, no hashtags, and proper line breaks",
     "image_prompt": "Detailed prompt for Nano Banana image generation",
     "key_topic": "{topic_name}: {concept}"
 }}
@@ -83,7 +87,8 @@ IMPORTANT: Respond in valid JSON format only:
         
         if result.get("template_mode"):
             return self._generate_template_concept_post(topic_name, concept)
-        
+
+        result["post_content"] = clean_post_content(result.get("post_content", ""))
         result["topic"] = topic_name
         result["concept"] = concept
         result["post_type"] = "concept"
@@ -108,10 +113,7 @@ When to use it:
 Common mistake to avoid:
 [Add the pitfall here]
 
-Have you used this before?
-What was your experience?
-
-#DataEngineering #{topic_name.replace(' ', '')} #SQL"""
+The best next step is to test this pattern on one small workload before standardizing it."""
 
         image_prompt = f"Educational infographic style visualization of {concept} in {topic_name}, modern tech aesthetic, gradient blue and purple colors, clean layout with icons, professional LinkedIn style, no text in image"
         
@@ -130,11 +132,17 @@ What was your experience?
         concepts = self.get_random_concepts(count)
         posts = []
         
-        for concept_info in concepts:
+        variations = [
+            "Start with a concrete example and teach the concept by walking through it.",
+            "Start with a common implementation mistake and build a practical checklist.",
+            "Use a before-and-after comparison with a concise closing recommendation.",
+        ]
+        for index, concept_info in enumerate(concepts):
             print(f"📚 Generating concept post: {concept_info['topic_name']} - {concept_info['concept'][:40]}...")
             post = self.generate_concept_post(
                 concept_info["topic_name"],
-                concept_info["concept"]
+                concept_info["concept"],
+                variation=variations[index % len(variations)],
             )
             if post.get("post_content"):
                 posts.append(post)
@@ -178,7 +186,7 @@ Format:
 - Brief code snippet or example if applicable
 - Maximum 100 words
 - NO emojis or emoticons
-- End with relevant hashtags
+- Do not include hashtags
 
 Also provide an image prompt for Nano Banana.
 
@@ -207,15 +215,14 @@ Example:
 [Your code example]
 ```
 
-Hope this helps someone today.
-
-#{topic.replace(' ', '')} #DataEngineering""",
+Apply it first to one small example, then compare the result before using it more broadly.""",
                 "image_prompt": f"Clean minimalist tip card design for {topic}, modern gradient background, icon representing the concept, professional LinkedIn style",
                 "topic": topic,
                 "post_type": "quick_tip",
                 "template_mode": True
             }
         
+        result["post_content"] = clean_post_content(result.get("post_content", ""))
         result["post_type"] = "quick_tip"
         return result
 

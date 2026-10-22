@@ -14,6 +14,7 @@ from rich.panel import Panel
 
 # Local imports
 from config import AI_POSTS_PER_RUN, OUTPUT_DIR, POSTS_PER_RUN, CONCEPT_POSTS_PER_RUN, AI_PROVIDER
+from content_utils import clean_post_content, clean_posts
 from news_fetcher import get_latest_ai_news, get_latest_news
 from post_generator import LinkedInPostGenerator
 from concept_posts import ConceptPostGenerator, TipOfTheDayGenerator
@@ -54,6 +55,10 @@ def load_previous_posts() -> List[Dict]:
 
 def save_posts(data: Dict, prefix: str) -> str:
     """Save generated posts to JSON file"""
+    clean_posts(data.get("news_posts") or [])
+    clean_posts(data.get("concept_posts") or [])
+    if isinstance(data.get("post_content"), str):
+        data["post_content"] = clean_post_content(data["post_content"])
     ensure_output_dir()
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"{prefix}_{timestamp}.json"
@@ -66,6 +71,8 @@ def save_posts(data: Dict, prefix: str) -> str:
 
 def save_readable_txt(news_posts: List[Dict], concept_posts: List[Dict]) -> str:
     """Save posts in a human-readable text file"""
+    clean_posts(news_posts)
+    clean_posts(concept_posts)
     ensure_output_dir()
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"posts_readable_{timestamp}.txt"
