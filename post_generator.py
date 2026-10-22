@@ -102,6 +102,67 @@ What's your take on this?
         
         return posts
 
+    def generate_ai_news_post(self, article: Dict) -> Dict:
+        """Generate a LinkedIn post about a current AI or LLM development."""
+        prompt = f"""
+You are a technology professional sharing a thoughtful update on LinkedIn.
+
+{POST_STYLE}
+
+Create a LinkedIn post about this current AI or LLM news:
+
+ARTICLE TITLE: {article.get('title', '')}
+ARTICLE DESCRIPTION: {article.get('description', '')}
+ARTICLE CONTENT: {article.get('content', '')[:1000]}
+SOURCE: {article.get('source', '')}
+
+Write a post that:
+1. Clearly explains what happened
+2. Explains why it matters to people working with AI, software, or data
+3. Separates confirmed facts from your interpretation
+4. Gives 2-3 practical takeaways
+5. Avoids hype, unsupported claims, and generic statements
+
+CRITICAL RULES:
+- NO emojis or emoticons anywhere in the post
+- Add line breaks after sentences for readability
+- Keep paragraphs short (1-2 sentences each)
+- Use simple language and define unfamiliar terms
+- Mention the source naturally
+- End with a relevant question
+- Use 3-4 relevant hashtags, including #AI or #LLM
+
+Also generate an image prompt for Nano Banana AI image generator.
+
+IMPORTANT: Respond in valid JSON format only:
+{{
+    "post_content": "The LinkedIn post text with proper line breaks and hashtags at end",
+    "image_prompt": "Detailed prompt for Nano Banana image generation",
+    "key_topic": "Main AI or LLM topic in 2-4 words"
+}}
+"""
+        system_prompt = "You explain current AI and LLM developments accurately and without hype. Respond with valid JSON only."
+        result = generate_with_json(self.provider, prompt, system_prompt)
+
+        if result.get("template_mode"):
+            result = self._generate_template_post(article)
+
+        result["source_article"] = article.get("title", "")
+        result["source_url"] = article.get("url", "")
+        result["post_type"] = "ai_news"
+        result["content_category"] = "AI / LLM"
+        return result
+
+    def generate_batch_ai_news_posts(self, articles: List[Dict], count: int = 1) -> List[Dict]:
+        """Generate a small dedicated batch of AI/LLM news posts."""
+        posts = []
+        for article in articles[:count]:
+            print(f"Generating AI/LLM post for: {article.get('title', '')[:50]}...")
+            post = self.generate_ai_news_post(article)
+            if post.get("post_content"):
+                posts.append(post)
+        return posts
+
     def generate_news_summary(self, article: Dict) -> Dict:
         """Generate a concise summary for news digest"""
         from config import DIGEST_STYLE

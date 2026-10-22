@@ -73,7 +73,9 @@ function renderPosts() {
     const { post, type, index } = item;
     const card = template.content.firstElementChild.cloneNode(true);
     const typeBadge = card.querySelector(".type-badge");
-    typeBadge.textContent = type === "news" ? "NEWS" : "CONCEPT";
+    typeBadge.textContent = post.post_type === "ai_news"
+      ? "AI / LLM"
+      : type === "news" ? "NEWS" : "CONCEPT";
     typeBadge.classList.add(type);
 
     card.querySelector(".topic").textContent = post.key_topic || post.topic || "Data Engineering";

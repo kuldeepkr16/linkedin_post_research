@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 from typing import List, Dict, Optional
 from bs4 import BeautifulSoup
 import re
-from config import RSS_FEEDS, TECH_RSS_FEEDS, HACKERNEWS_FEEDS
+from config import AI_RSS_FEEDS, RSS_FEEDS, TECH_RSS_FEEDS, HACKERNEWS_FEEDS
 
 
 class NewsFetcher:
@@ -49,11 +49,11 @@ class NewsFetcher:
         
         return deduplicated
     
-    def _fetch_from_google_rss(self) -> List[Dict]:
+    def _fetch_from_google_rss(self, feeds: Optional[List[str]] = None) -> List[Dict]:
         """Fetch news from Google News RSS feeds (FREE)"""
         articles = []
         
-        for feed_url in RSS_FEEDS:
+        for feed_url in feeds or RSS_FEEDS:
             try:
                 feed = feedparser.parse(feed_url)
                 if getattr(feed, "bozo", False) and not feed.entries:
@@ -63,11 +63,14 @@ class NewsFetcher:
                 for entry in feed.entries[:10]:
                     pub_date = self._parse_date(entry.get("published", ""))
                     if pub_date and pub_date > self.cutoff_date:
+                        source_data = entry.get("source") or {}
+                        publisher = source_data.get("title", "") if isinstance(source_data, dict) else ""
                         articles.append({
                             "title": self._clean_text(entry.get("title", "")),
                             "description": self._clean_text(entry.get("summary", "")),
                             "url": entry.get("link", ""),
-                            "source": "Google News",
+                            "source": publisher or "Google News",
+                            "publisher": publisher,
                             "published": entry.get("published", ""),
                             "content": self._clean_text(entry.get("summary", "")),
                         })
@@ -236,6 +239,46 @@ class NewsFetcher:
         scored_articles.sort(key=lambda x: x.get("relevance_score", 0), reverse=True)
         return scored_articles
 
+    def fetch_ai_news(self) -> List[Dict]:
+        """Fetch and rank current AI/LLM news from dedicated feeds."""
+        articles = self._fetch_from_google_rss(AI_RSS_FEEDS)
+        articles = self._deduplicate_news(articles)
+
+        ai_terms = [
+            "artificial intelligence", "generative ai", "foundation model",
+            "large language model", "language model", "machine learning",
+            "openai", "chatgpt", "anthropic", "claude", "gemini",
+            "deepmind", "mistral", "llama", "copilot", "ai agent",
+            "ai model", "llm", "rag", "reasoning model", "multimodal",
+        ]
+        trusted_publishers = [
+            "reuters", "associated press", "ap news", "bbc", "cnbc",
+            "financial times", "the guardian", "the verge", "techcrunch",
+            "ars technica", "wired", "mit technology review", "venturebeat",
+            "openai", "anthropic", "google", "deepmind", "microsoft",
+            "meta ai", "nvidia", "hugging face",
+        ]
+        promotional_phrases = [
+            "best ai tools", "for just", "discount", "coupon", "deal",
+            "limited time", "playing favorites", "leaderboard 2026",
+        ]
+
+        ranked = []
+        for article in articles:
+            text = f"{article.get('title', '')} {article.get('description', '')}".lower()
+            if any(phrase in text for phrase in promotional_phrases):
+                continue
+            score = sum(1 for term in ai_terms if term in text)
+            if score:
+                publisher = article.get("publisher", "").lower()
+                publisher_bonus = 5 if any(name in publisher for name in trusted_publishers) else 0
+                article["ai_relevance_score"] = score + publisher_bonus
+                article["content_category"] = "ai_llm"
+                ranked.append(article)
+
+        ranked.sort(key=lambda item: item.get("ai_relevance_score", 0), reverse=True)
+        return ranked
+
 
 def get_latest_news(limit: int = 10) -> List[Dict]:
     """Convenience function to get latest relevant news"""
@@ -243,6 +286,11 @@ def get_latest_news(limit: int = 10) -> List[Dict]:
     all_news = fetcher.fetch_all_news()
     relevant_news = fetcher.filter_relevant_news(all_news)
     return relevant_news[:limit]
+
+
+def get_latest_ai_news(limit: int = 10) -> List[Dict]:
+    """Get current news specifically about AI, LLMs, and major model providers."""
+    return NewsFetcher().fetch_ai_news()[:limit]
 
 
 if __name__ == "__main__":

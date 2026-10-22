@@ -66,7 +66,7 @@ If no API is configured, the script generates templates you can customize.
 
 ## 🚀 Usage
 
-### Generate All Posts (2 News + 2 Concepts)
+### Generate All Posts (2 Data News + 1 AI/LLM News + 2 Concepts)
 ```bash
 python main.py
 ```
@@ -146,6 +146,7 @@ drafts, updates the dashboard history, and deploys the site to GitHub Pages.
 The dashboard lets you:
 
 - Review news and concept drafts.
+- Review one dedicated current AI/LLM news draft each day.
 - Open the source article for news posts.
 - Copy a finished draft.
 - Mark drafts as **Ready to post** or **Skip** in your browser.

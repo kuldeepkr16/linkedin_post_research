@@ -13,8 +13,8 @@ from rich.console import Console
 from rich.panel import Panel
 
 # Local imports
-from config import OUTPUT_DIR, POSTS_PER_RUN, CONCEPT_POSTS_PER_RUN, AI_PROVIDER
-from news_fetcher import get_latest_news
+from config import AI_POSTS_PER_RUN, OUTPUT_DIR, POSTS_PER_RUN, CONCEPT_POSTS_PER_RUN, AI_PROVIDER
+from news_fetcher import get_latest_ai_news, get_latest_news
 from post_generator import LinkedInPostGenerator
 from concept_posts import ConceptPostGenerator, TipOfTheDayGenerator
 
@@ -122,6 +122,31 @@ def generate_concept_posts(limit: int = 2) -> List[Dict]:
     
     return posts
 
+def generate_ai_news_posts(limit: int = 1, excluded_posts: List[Dict] = None) -> List[Dict]:
+    """Generate dedicated posts about current AI and LLM developments."""
+    console.print("\n[bold magenta]Fetching latest AI and LLM news...[/bold magenta]")
+    articles = get_latest_ai_news(limit=20)
+
+    excluded_urls = {
+        post.get("source_url") for post in (excluded_posts or []) if post.get("source_url")
+    }
+    excluded_titles = {
+        post.get("source_article", "").strip().lower()
+        for post in (excluded_posts or []) if post.get("source_article")
+    }
+    articles = [
+        article for article in articles
+        if article.get("url") not in excluded_urls
+        and article.get("title", "").strip().lower() not in excluded_titles
+    ]
+
+    if not articles:
+        console.print("[yellow]No distinct AI/LLM news found today.[/yellow]")
+        return []
+
+    generator = LinkedInPostGenerator()
+    return generator.generate_batch_ai_news_posts(articles, count=limit)
+
 def generate_tip():
     """Generate a quick tip post"""
     console.print("\n[bold yellow]💡 Generating quick tip...[/bold yellow]")
@@ -200,6 +225,13 @@ def main():
         news_posts = generate_news_posts(limit=POSTS_PER_RUN)
         all_generated_data["news_posts"] = news_posts
         console.print(f"[green]✅ Generated {len(news_posts)} news posts[/green]")
+
+        ai_news_posts = generate_ai_news_posts(
+            limit=AI_POSTS_PER_RUN,
+            excluded_posts=news_posts,
+        )
+        all_generated_data["news_posts"].extend(ai_news_posts)
+        console.print(f"[green]Generated {len(ai_news_posts)} AI/LLM news posts[/green]")
 
     # Generate Concept Posts
     if not args.news_only:

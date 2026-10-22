@@ -215,6 +215,13 @@ RSS_FEEDS = [
     "https://news.google.com/rss/search?q=Databricks+Snowflake+when:1d&hl=en-US&gl=US&ceid=US:en",
 ]
 
+# Google News RSS feeds dedicated to current AI and LLM developments.
+AI_RSS_FEEDS = [
+    "https://news.google.com/rss/search?q=artificial+intelligence+LLM+when:1d&hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/search?q=OpenAI+Anthropic+Gemini+when:1d&hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/search?q=AI+agents+generative+AI+when:1d&hl=en-US&gl=US&ceid=US:en",
+]
+
 # Reddit RSS feeds (no API needed)
 TECH_RSS_FEEDS = [
     "https://www.reddit.com/r/dataengineering/.rss",
@@ -236,6 +243,7 @@ HACKERNEWS_FEEDS = [
 
 OUTPUT_DIR = "output"
 POSTS_PER_RUN = 2
+AI_POSTS_PER_RUN = 1
 CONCEPT_POSTS_PER_RUN = 2
 
 # =============================================================================
