@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-10-22T09:56:34.465872",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "Ever tried to set up disaster recovery for PostgreSQL on OCI and felt like you were juggling too many pieces?\nThat feeling changed with Oracle's latest update.\nThe new Full Stack DR now supports native PostgreSQL.\nIt means you can spin up a standby instance directly from the console without any extra layers.\nNetworking got a boost too.\nCross‑region VCN peering is now smoother and latency drops noticeably.\nFrom a practical standpoint,\n here are three things I’m already testing:\n- Full‑stack DR lets me provision a replica with a few clicks.\n- Native PostgreSQL support removes the need for custom scripts or third‑party tools.\n- The networking tweaks simplify VCN setup and improve failover speed.\nI recommend running a scheduled failover drill now that the process is faster.\nAlso,\n enable automated backups and keep an eye on the new latency metrics.\nThese changes let us focus more on data quality and less on plumbing.\nHow are you planning to incorporate these new OCI features into your data pipeline?\n#DataEngineering #PostgreSQL #OCI #DisasterRecovery",
+      "image_prompt": "A sleek, futuristic illustration of a cloud data center labeled OCI, with a prominent PostgreSQL elephant logo integrated into the architecture. Show a network diagram with arrows indicating cross‑region replication, and glowing lines representing low‑latency VCN peering. Use a clean, professional style with blue and teal tones, minimal text, and a subtle gradient background. Emphasize reliability and modern infrastructure.",
+      "key_topic": "OCI PostgreSQL DR",
+      "source_article": "OCI Full Stack DR Native PostgreSQL Support and Networking Enhancements - Oracle Blogs",
+      "source_url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1iSm1ZNkc2UWc5cWxaT0YyYUZlamE5SWRIa1pIQjRiczdKSnJheWNzVElRQXoydWhCZDFXZUs3N25peXFjT1FHU3BiWV9oM2NiYmNLX2JwLUZUV3dWZU5GdF9nNU1YUHo3NXZRX29qOFh5N080b3JTLXZDaC0?oc=5"
+    },
+    {
+      "post_content": "OpenAI announced today that its models will run on Google Cloud.\n\nThe deal means you can now access GPT‑4,\nClaude‑like,\nand other APIs from Google’s data centers.\n\nIt’s a clear expansion beyond the exclusive Microsoft Azure agreement that has been in place since 2020.\n\nThe fact is that Google will host the compute and storage for OpenAI’s inference workloads, according to CNBC.\n\nMy interpretation is that OpenAI is looking for redundancy and price competition, while Google gains AI‑ready services to attract developers.\n\nFor anyone building AI‑powered apps, this changes three things.\n\n- You can choose the cloud provider that best fits your latency, cost, and compliance needs.\n- Multi‑cloud strategies become easier because the same API endpoints are available on both Azure and Google Cloud.\n- Data residency rules may be met by selecting the region that matches your regulatory requirements.\n\nWhat impact will this have on your cloud roadmap?\n\n#AI #LLM #OpenAI #GoogleCloud",
+      "image_prompt": "A modern data center interior with sleek server racks glowing in blue, a stylized OpenAI logo floating above, and a Google Cloud logo on a transparent holographic screen, futuristic but realistic, high detail, soft lighting, professional tech illustration.",
+      "key_topic": "OpenAI Google Cloud",
+      "source_article": "OpenAI to bring AI models to Google's cloud, in further expansion beyond Microsoft - CNBC",
+      "source_url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNNXhvUlpRaDlhdjFIa3BDYy12MFBILU1vZFNfa0ZKUlV6cERUd1lVUWtEbEFVcTAxRlVuaGJFTENlYUtyOFloTlhRZ1QwTW5zOUd2UXFwT1pjS0FhX2NfT0R4MUJpNVZ6Z3ItZ05WRklZN2tSX2NUdkhsckYyM1FHbjM4Mi1WeTNvdUI5MkR0LXphNWs5UHFUZGxENXE4NWliZkdQeXR5eW7SAa4BQVVfeXFMTUhXVUF3ZHRsOGJpRnlGR2dKT2FWdk5oaW5zTzVJN1E5aEt5eGM4Wmtyei00T2F4dFBMSm5CWGR1WjYzU3BpVWpKUjdNZkltS3VzdkYyMDNMZWtCbnQwZHUtMVV5dTdmZF9tcVpnVW52aGlqNGJzNlJvaDJyZXRMR19QN293Tzk2NnV0NXVwUmxBUUx6TTA2aDMzaUlTc20zWFg2UkhfdnhCUnpnMm9R?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "Ever stared at a dashboard and wondered why the trend line suddenly spikes and you have no idea if it's real or just noise?\n\nIn QuickSight, ML Insights and Forecasting let the service automatically detect anomalies and project future values without writing a single line of code.\n\nThink of it like this: you have daily sales data for the past year.\nYou enable Forecast on the sales visual and QuickSight will suggest a 30‑day forward view,\n highlighting days that deviate from the expected pattern.\n\nHere are a couple of things to keep in mind:\n\n- The model works best with at least 30 data points; sparse data can produce unreliable forecasts.\n- Review the confidence interval; a wide band means the model is uncertain,\n so treat those predictions cautiously.\n- Enable anomaly detection on key metrics to catch outliers early and reduce manual monitoring.\n\nA common mistake is trusting the forecast blindly without checking the underlying data quality or seasonality settings.\n\nHave you tried using QuickSight’s forecasting on any of your own metrics?\n\n#AWS #QuickSight #DataAnalytics #MachineLearning",
+      "image_prompt": "",
+      "recovered": true,
+      "topic": "AWS QuickSight",
+      "concept": "ML Insights and Forecasting",
+      "post_type": "concept"
+    },
+    {
+      "post_content": "Ever found yourself rebuilding the same training data for every model?\nI used to spend hours pulling raw logs,\n cleaning them,\n and then re‑creating features for each experiment.\nThat’s why I started using a feature store.\nA feature store is simply a centralized place where you define,\n compute,\n and serve features.\nThink of it as a library of ready‑to‑use data columns that both data engineers and data scientists can access.\nFor example, we built a store for user activity features like daily active minutes,\n last purchase amount,\n and churn risk score.\nEach feature is calculated once in our batch pipeline and then served in real time to models.\n\nKey takeaways:\n- Consistency between training and serving data reduces drift.\n- Re‑using features cuts engineering time by up to 40%.\n- Versioning lets you roll back to a known good set of features.\n\nCommon mistake to avoid: treating the feature store as just another data lake.\nIf you don’t enforce schema and monitoring, you’ll end up with stale or mismatched features.\n\nHow do you currently manage feature reuse in your projects?\n\n#DataEngineering #FeatureStore #MachineLearning #AI",
+      "image_prompt": "A sleek, modern data engineering illustration showing a central feature store as a glowing repository, with data pipelines feeding raw logs on the left and real‑time feature serving on the right, clean lines, bright blues and greens, futuristic tech vibe, suitable for a professional article on feature store architecture.",
+      "key_topic": "Data Engineering: Feature Store Architecture",
+      "topic": "Data Engineering",
+      "concept": "Feature Store Architecture",
+      "post_type": "concept"
+    }
+  ]
+}
