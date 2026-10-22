@@ -1,22 +1,30 @@
 {
-  "generated_at": "2026-10-21T07:24:49.992061",
+  "generated_at": "2026-10-22T07:13:19.829921",
   "ai_provider": "groq",
   "news_posts": [
     {
-      "post_content": "Just saw the news about FormativGroup buying Saige Consulting.\nIt got me thinking about how fast the AI and data engineering space is moving.\nBringing Saige's expertise into FormativGroup's platform could mean more end‑to‑end pipelines that are easier to spin up.\nFrom my own projects I’ve learned a few things that might help anyone watching this kind of consolidation.\n- Keep your data contracts versioned so new tools can plug in without breaking downstream jobs.\n- Build reusable components early – they become the glue when platforms merge.\n- Invest in monitoring that can surface latency or drift the moment a new model is deployed.\nIf you’re evaluating a new platform,\n ask how it handles existing code and whether it supports a gradual migration path.\nWhat’s one change you’d make to your data stack after a merger like this?\n#DataEngineering #AI #PlatformIntegration #TechNews",
-      "image_prompt": "A modern data engineering workspace with sleek cloud servers, AI icons, and a symbolic handshake representing an acquisition, rendered in a professional, clean style with subtle blue tones.",
-      "key_topic": "AI Platform Acquisition",
-      "source_article": "FormativGroup Acquires Saige Consulting To Expand AI And Data Engineering Platform - Pulse 2.0",
-      "source_url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQN1dyUmxSR2hlNC1QWURoVEZjeldLdEV3XzY5OVJHMWJ2SUdhbk9zOU5yRUlnTUlKX3ZmUTdFbk5RemlMb0NjUHNYaWpFLUxoSERtUE13bTdCMkRFQ2N5dTY4MW82VDl3Mk1ONmxQekR6ckYtZGFNakVXeDFNN2E0QlZrNXBtaEVUWkh1TUMxSFNxTXpoVDFnYU1jYWZDZWVPV0ZNaw?oc=5"
+      "post_content": "Just saw Oracle's latest update on OCI and thought it was worth sharing.\n\nThey've added native PostgreSQL support for full‑stack disaster recovery.\n\nThat means you can now spin up a DR replica in another region with a few clicks.\n\nNo need to manage external tools or custom scripts.\n\nFrom a data engineering perspective this simplifies a lot of moving parts.\n\nHere are a couple of things I think are most useful:\n\n- Native DR for PostgreSQL reduces setup time and operational overhead.\n\n- Built‑in networking enhancements give lower latency and more predictable failover.\n\n- You can keep the same VCN configuration across primary and DR sites, which helps with security policies.\n\nIn practice I’d start by testing the replica sync on a non‑critical schema before cutting over.\n\nIf you’re already on OCI, try the new feature on a dev environment and see how the failover behaves.\n\nWhat do you think – will this change how you design your DR strategy?\n\n#OCI #PostgreSQL #DataEngineering #DisasterRecovery",
+      "image_prompt": "A realistic illustration of Oracle Cloud Infrastructure data center with PostgreSQL logo and network diagrams showing disaster recovery replication between regions, featuring sleek cloud icons, connected arrows, and subtle blue tones.",
+      "key_topic": "OCI PostgreSQL DR",
+      "source_article": "OCI Full Stack DR Native PostgreSQL Support and Networking Enhancements - Oracle Blogs",
+      "source_url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1iSm1ZNkc2UWc5cWxaT0YyYUZlamE5SWRIa1pIQjRiczdKSnJheWNzVElRQXoydWhCZDFXZUs3N25peXFjT1FHU3BiWV9oM2NiYmNLX2JwLUZUV3dWZU5GdF9nNU1YUHo3NXZRX29qOFh5N080b3JTLXZDaC0?oc=5"
     }
   ],
   "concept_posts": [
     {
-      "post_content": "Ever tried to fix a broken data pipeline and ended up with half‑finished tables?\nThat feeling is all too common when you don’t have proper transaction support.\n\nDelta Lake brings ACID transactions to your Spark data lake.\nThink of it like a notebook that records every change and can roll back if something goes wrong.\nFor example,\nyou load a daily sales file,\nthen run a cleanup job that deletes duplicate rows.\nWith Delta,\nboth the load and the cleanup happen in a single transaction,\nso you never see a partially updated table.\n\nKey takeaways:\n- Every write is atomic,\nconsistent,\nisolated and durable – just like a traditional database.\n- Time travel lets you query older versions of the data with a simple timestamp.\n- Schema enforcement stops bad data from slipping in.\n\nCommon mistake: treating Delta tables as ordinary files and using raw Spark writes without the Delta format.\nThat bypasses the transaction layer and defeats the purpose.\n\nWhat’s the biggest data‑quality hiccup you’ve solved with Delta Lake?\n\n#ApacheSpark #DeltaLake #DataEngineering #BigData",
+      "post_content": "Ever found yourself wondering why your data lake feels like a black hole?\nI’ve been there,\n pulling reports that take ages and still missing key metrics.\nThe difference between a data lake and a data mesh is mostly about who owns the data and how it’s served.\n\nThink of a data lake as a giant storage tank.\nAll raw data lands there,\n and a central team is responsible for cleaning,\n cataloguing,\n and exposing it.\nA data mesh, on the other hand, treats each domain as its own mini‑lake.\nEach product team owns,\n curates,\n and serves its data as a product, while still adhering to shared standards.\n\nIn practice I moved a marketing analytics pipeline from a lake to a mesh.\nThe team now publishes a tidy “campaign performance” dataset that anyone can query without waiting for the central data team.\n\nKey takeaways:\n- Ownership stays close to the source, so data is fresher and more relevant.\n- Standard contracts (schemas, APIs) keep everything interoperable.\n- Central governance becomes a set of guidelines, not a bottleneck.\n\nCommon mistake: trying to enforce a full mesh overnight without giving teams the tooling and training they need.\n\nWhat’s your experience with shifting from a lake to a mesh?\n\n#DataEngineering #DataMesh #DataLake #Analytics",
+      "image_prompt": "A split illustration showing a massive data lake as a deep blue reservoir on the left and a data mesh as interconnected nodes of smaller ponds on the right, with data pipelines flowing between them, modern flat design, clear labels, professional look.",
+      "key_topic": "Data Engineering: Data Mesh vs Data Lake",
+      "topic": "Data Engineering",
+      "concept": "Data Mesh vs Data Lake",
+      "post_type": "concept"
+    },
+    {
+      "post_content": "Ever found yourself wondering why two users can see different results when they run the same query at the same time?\n\nIn SQL the answer lies in transaction isolation levels.\n\nWhen you start a transaction,\n the database decides how much you can see of other users' changes,\n and that decision is called the isolation level.\n\nThink of it like a conversation at a busy coffee shop.\nIf you’re in a quiet corner (read uncommitted),\n you hear every word even before the speaker finishes.\nIf you sit at a table with a glass barrier (read committed),\n you only hear what’s been said out loud.\nHigher levels like repeatable read or serializable add more walls so nobody’s words slip in or out unexpectedly.\n\nA common mistake is leaving the default isolation level at the most permissive setting in a high‑traffic system,\n which can lead to dirty reads or phantom rows.\n\nKey takeaways:\n- Choose the isolation level that matches the consistency you need,\n not just performance.\n- Read committed is a safe default for most OLTP workloads.\n- Test how higher levels affect lock contention before you roll them out.\n\nWhat isolation level have you found works best for your most critical pipelines?\n\n#SQL #DataEngineering #DatabaseDesign #TransactionManagement",
       "image_prompt": "",
       "recovered": true,
-      "topic": "Apache Spark",
-      "concept": "Delta Lake and ACID Transactions",
+      "topic": "SQL",
+      "concept": "Transaction Isolation Levels",
       "post_type": "concept"
     }
   ]
