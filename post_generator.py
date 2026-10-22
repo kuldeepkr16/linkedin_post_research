@@ -163,7 +163,7 @@ IMPORTANT: Respond in valid JSON format only:
         system_prompt = "You explain current AI and LLM developments accurately and without hype. Respond with valid JSON only."
         result = generate_with_json(self.provider, prompt, system_prompt)
 
-        if result.get("template_mode"):
+        if result.get("template_mode") or not result.get("post_content"):
             result = self._generate_template_ai_learning_post(article)
 
         result["post_content"] = clean_post_content(result.get("post_content", ""))
