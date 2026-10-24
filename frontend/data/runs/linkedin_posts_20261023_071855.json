@@ -3,14 +3,15 @@
   "ai_provider": "groq",
   "news_posts": [
     {
-      "post_content": "A useful way to evaluate any AI announcement is to look past the headline.\n\nThe current example is: Architecting Governed, Self-Evolving AI Agents on Google Cloud - Google for Developers Blog\n\nUse three questions to turn that update into something practical:\n\n1. What capability actually changed?\nSeparate a new technical ability from a pricing, packaging, or partnership change.\n\n2. What changes in the system design?\nCheck the effect on data flow, latency, security boundaries, model portability, and operational cost.\n\n3. What evidence would justify adoption?\nDefine a small evaluation with representative data, a baseline, quality measures, and a failure threshold.\n\nThis prevents a team from rebuilding around every headline.\nThe durable skill is learning how to test an AI claim against your own workload before making an architecture decision.",
-      "image_prompt": "A clean three-step AI evaluation framework showing capability, architecture, and evidence, professional minimalist LinkedIn visual, no text",
-      "key_topic": "Evaluating AI announcements",
+      "post_content": "An AI agent should be allowed to improve only inside a controlled feedback loop.\n\nThe article “Architecting Governed, Self-Evolving AI Agents on Google Cloud - Google for Developers Blog” points to a growing design problem: agents can plan, call tools, and adapt, but every new behavior also changes operational risk.\n\nA governed agent needs four separate controls:\n\n1. Version the agent.\nStore its prompt, tools, model, permissions, and evaluation results as one releasable unit.\n\n2. Limit its authority.\nGive each tool the smallest required scope, and require approval for actions with material impact.\n\n3. Gate every change.\nTest proposed updates against fixed tasks, adversarial cases, cost limits, and safety rules before promotion.\n\n4. Preserve an audit trail and rollback path.\nRecord what the agent observed, decided, and changed so an operator can investigate and restore a known version.\n\n“Self-evolving” should describe an automated proposal process, not uncontrolled production changes.\nThe durable architecture is a measured loop: observe, propose, evaluate, approve, deploy, and monitor.",
+      "image_prompt": "A clean educational diagram about Governed AI agents, professional minimalist LinkedIn visual, no text",
+      "key_topic": "Governed AI agents",
       "template_mode": true,
       "source_article": "Architecting Governed, Self-Evolving AI Agents on Google Cloud - Google for Developers Blog",
       "source_url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPeUFRa0ktaWw2S1ljQXB1OXRkcnFHeWJycGMtNFZaRnc0MVpiaGJwVEYwNzhUdTExWXUtZ1Y2dENtQWxnNnNmdmxTdENpVXV2d1haYzdYQmNnUXNmWUFTcjhRVU5rTzF4NE9SaVU2d2xPQ3ZSdmZ2bzhsUDhpVkoxeFJMZmhYSGI1cmtmVTcyZDlPMUlRSlVwUnZtNVRpYzV1b1l0UVg5YVg?oc=5",
       "post_type": "ai_news",
-      "content_category": "AI / LLM"
+      "content_category": "AI / LLM",
+      "fallback_reason": "Historical generic fallback replaced with topic-specific educational fallback"
     }
   ],
   "concept_posts": [

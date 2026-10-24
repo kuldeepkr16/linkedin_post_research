@@ -3,14 +3,15 @@
   "ai_provider": "groq",
   "news_posts": [
     {
-      "post_content": "A useful way to evaluate any AI announcement is to look past the headline.\n\nThe current example is: Using AI Agents to Teach Robots Like Microduck to Walk in Simulation NVIDIA Technical Blog - NVIDIA Developer\n\nUse three questions to turn that update into something practical:\n\n1. What capability actually changed?\nSeparate a new technical ability from a pricing, packaging, or partnership change.\n\n2. What changes in the system design?\nCheck the effect on data flow, latency, security boundaries, model portability, and operational cost.\n\n3. What evidence would justify adoption?\nDefine a small evaluation with representative data, a baseline, quality measures, and a failure threshold.\n\nThis prevents a team from rebuilding around every headline.\nThe durable skill is learning how to test an AI claim against your own workload before making an architecture decision.",
-      "image_prompt": "A clean three-step AI evaluation framework showing capability, architecture, and evidence, professional minimalist LinkedIn visual, no text",
-      "key_topic": "Evaluating AI announcements",
+      "post_content": "Teaching a robot in simulation is useful because failure is cheap there.\n\nThe article “Using AI Agents to Teach Robots Like Microduck to Walk in Simulation NVIDIA Technical Blog - NVIDIA Developer” is a practical example of reinforcement learning: an agent tries actions, receives a reward signal, and adjusts its policy to improve future behavior.\n\nThe difficult part is the simulation-to-reality gap.\nA controller that works in a clean virtual world may fail when a real motor has delay, a sensor is noisy, or the floor has different friction.\n\nThree techniques help close that gap:\n\n1. Randomize the environment.\nVary mass, friction, delay, lighting, and sensor noise during training.\n\n2. Design rewards around the real objective.\nReward stable forward movement while penalizing falls, excessive energy use, and unsafe joint motion.\n\n3. Validate in stages.\nMove from simulation to hardware with speed limits, safety constraints, and measurable stop conditions.\n\nThe lesson applies beyond robotics: synthetic training works best when variation and failure modes reflect the environment where the system will actually operate.",
+      "image_prompt": "A clean educational diagram about Simulation to reality, professional minimalist LinkedIn visual, no text",
+      "key_topic": "Simulation to reality",
       "template_mode": true,
       "source_article": "Using AI Agents to Teach Robots Like Microduck to Walk in Simulation  NVIDIA Technical Blog - NVIDIA Developer",
       "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOZ2xvNHk5ejQzcXU5NzBBdm1kSU0tOHJIa3NVeFdlWmJ2ektrdFlpbW1VOUhFWGRIcTdwS0xTRlJsa0lWYkRjMkM0eUpMYkdCUDlaRUJNalZ5OGRKbFhfOHRhNjhIQmY3bEVHUXlQbFJ6cFNxUC1GWlBSUjlpYUpPbVMtNnNXMmlCNk9XTzFnZXJoT3d1VnA0ZHR0WVgydEtPMHc4TjZB?oc=5",
       "post_type": "ai_news",
-      "content_category": "AI / LLM"
+      "content_category": "AI / LLM",
+      "fallback_reason": "Historical generic fallback replaced with topic-specific educational fallback"
     }
   ],
   "concept_posts": [

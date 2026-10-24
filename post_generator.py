@@ -163,8 +163,29 @@ IMPORTANT: Respond in valid JSON format only:
         system_prompt = "You explain current AI and LLM developments accurately and without hype. Respond with valid JSON only."
         result = generate_with_json(self.provider, prompt, system_prompt)
 
+        fallback_reason = result.get("error", "")
+        if not result.get("template_mode") and not result.get("post_content"):
+            retry_prompt = f"""
+Turn this source into a concise educational LinkedIn post.
+
+TITLE: {article.get('title', '')}
+DESCRIPTION: {article.get('description', '')}
+CONTENT: {article.get('content', '')[:1200]}
+SOURCE: {article.get('source', '')}
+
+Teach one specific technical idea from the source using a practical example or checklist.
+Use the announcement only as context. Do not write a news summary.
+Do not invent experience, benchmarks, or facts. Do not use hashtags or emojis.
+Keep the post between 140 and 220 words.
+
+Return valid JSON only with string fields: post_content, image_prompt, and key_topic.
+"""
+            result = generate_with_json(self.provider, retry_prompt, system_prompt)
+            fallback_reason = result.get("error", fallback_reason)
+
         if result.get("template_mode") or not result.get("post_content"):
             result = self._generate_template_ai_learning_post(article)
+            result["fallback_reason"] = fallback_reason or "AI provider unavailable"
 
         result["post_content"] = clean_post_content(result.get("post_content", ""))
         result["source_article"] = article.get("title", "")
@@ -174,30 +195,112 @@ IMPORTANT: Respond in valid JSON format only:
         return result
 
     def _generate_template_ai_learning_post(self, article: Dict) -> Dict:
-        """Create an educational AI framework when a model is unavailable."""
+        """Create a topic-specific educational post when the model is unavailable."""
         title = article.get("title", "Current AI development")
-        post_content = f"""A useful way to evaluate any AI announcement is to look past the headline.
+        source_text = " ".join(
+            str(article.get(field, "")) for field in ("title", "description", "content")
+        ).lower()
 
-The current example is: {title}
+        if any(word in source_text for word in ("robot", "simulation", "sim-to-real", "sim2real")):
+            key_topic = "Simulation to reality"
+            post_content = f"""Teaching a robot in simulation is useful because failure is cheap there.
 
-Use three questions to turn that update into something practical:
+The article “{title}” is a practical example of reinforcement learning: an agent tries actions, receives a reward signal, and adjusts its policy to improve future behavior.
 
-1. What capability actually changed?
-Separate a new technical ability from a pricing, packaging, or partnership change.
+The difficult part is the simulation-to-reality gap.
+A controller that works in a clean virtual world may fail when a real motor has delay, a sensor is noisy, or the floor has different friction.
 
-2. What changes in the system design?
-Check the effect on data flow, latency, security boundaries, model portability, and operational cost.
+Three techniques help close that gap:
 
-3. What evidence would justify adoption?
-Define a small evaluation with representative data, a baseline, quality measures, and a failure threshold.
+1. Randomize the environment.
+Vary mass, friction, delay, lighting, and sensor noise during training.
 
-This prevents a team from rebuilding around every headline.
-The durable skill is learning how to test an AI claim against your own workload before making an architecture decision."""
+2. Design rewards around the real objective.
+Reward stable forward movement while penalizing falls, excessive energy use, and unsafe joint motion.
+
+3. Validate in stages.
+Move from simulation to hardware with speed limits, safety constraints, and measurable stop conditions.
+
+The lesson applies beyond robotics: synthetic training works best when variation and failure modes reflect the environment where the system will actually operate."""
+        elif "agent" in source_text or "govern" in source_text:
+            key_topic = "Governed AI agents"
+            post_content = f"""An AI agent should be allowed to improve only inside a controlled feedback loop.
+
+The article “{title}” points to a growing design problem: agents can plan, call tools, and adapt, but every new behavior also changes operational risk.
+
+A governed agent needs four separate controls:
+
+1. Version the agent.
+Store its prompt, tools, model, permissions, and evaluation results as one releasable unit.
+
+2. Limit its authority.
+Give each tool the smallest required scope, and require approval for actions with material impact.
+
+3. Gate every change.
+Test proposed updates against fixed tasks, adversarial cases, cost limits, and safety rules before promotion.
+
+4. Preserve an audit trail and rollback path.
+Record what the agent observed, decided, and changed so an operator can investigate and restore a known version.
+
+“Self-evolving” should describe an automated proposal process, not uncontrolled production changes.
+The durable architecture is a measured loop: observe, propose, evaluate, approve, deploy, and monitor."""
+        elif any(word in source_text for word in ("cloud", "inference", "hosting", "provider")):
+            key_topic = "LLM deployment tradeoffs"
+            post_content = f"""Choosing where to run an LLM is a workload decision, not a brand decision.
+
+The article “{title}” is a useful reason to review the factors that determine whether a model deployment will work in production.
+
+Compare providers with the same representative prompts and measure:
+
+1. Quality: task success and failure patterns on your own data.
+2. Latency: median and tail response times at expected concurrency.
+3. Cost: input, output, caching, networking, and idle capacity.
+4. Governance: data location, retention, access control, and audit logs.
+5. Portability: API differences, tool calling behavior, and the effort required to move.
+
+Run a small evaluation before changing architecture.
+A provider that looks cheaper per token may cost more after retries, slower responses, or migration work are included.
+
+The useful outcome is a decision backed by workload evidence and a documented exit path."""
+        elif any(word in source_text for word in ("security", "attack", "prompt injection", "vulnerability")):
+            key_topic = "AI threat modeling"
+            post_content = f"""AI security starts by mapping what the model can read, decide, and change.
+
+The article “{title}” provides a useful prompt for a simple threat model.
+
+Review four boundaries:
+
+1. Inputs: Can untrusted text influence instructions or tool arguments?
+2. Data: Can the model retrieve records that the requesting user cannot access directly?
+3. Tools: Can one model call create, delete, purchase, publish, or change permissions?
+4. Outputs: Can generated content trigger another system without validation?
+
+For each boundary, define authentication, authorization, input validation, logging, and a human approval point where impact is significant.
+
+Model-level safeguards help, but system controls carry the real security guarantee.
+Treat the model as an untrusted decision component inside a trusted application boundary."""
+        else:
+            key_topic = "Evaluating AI systems"
+            post_content = f"""A new AI capability matters only when it improves a real task under real constraints.
+
+Use the article “{title}” as a starting point for an evaluation, rather than as proof that the technology is ready for adoption.
+
+Build a small test in four steps:
+
+1. Define the task and a current baseline.
+2. Use representative inputs, including difficult and unsafe cases.
+3. Measure quality, latency, cost, and failure severity separately.
+4. Set a promotion threshold and a rollback condition before seeing the result.
+
+Keep confirmed source facts separate from assumptions about your own system.
+A benchmark improvement does not automatically predict reliability on different data, tools, or operating conditions.
+
+The durable skill is turning an AI claim into a falsifiable test with a clear adoption decision."""
 
         return {
             "post_content": clean_post_content(post_content),
-            "image_prompt": "A clean three-step AI evaluation framework showing capability, architecture, and evidence, professional minimalist LinkedIn visual, no text",
-            "key_topic": "Evaluating AI announcements",
+            "image_prompt": f"A clean educational diagram about {key_topic}, professional minimalist LinkedIn visual, no text",
+            "key_topic": key_topic,
             "template_mode": True,
         }
 
