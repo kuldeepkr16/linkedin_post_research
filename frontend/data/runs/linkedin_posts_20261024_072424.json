@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-10-24T07:23:32.791532",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "A useful way to evaluate any AI announcement is to look past the headline.\n\nThe current example is: Using AI Agents to Teach Robots Like Microduck to Walk in Simulation NVIDIA Technical Blog - NVIDIA Developer\n\nUse three questions to turn that update into something practical:\n\n1. What capability actually changed?\nSeparate a new technical ability from a pricing, packaging, or partnership change.\n\n2. What changes in the system design?\nCheck the effect on data flow, latency, security boundaries, model portability, and operational cost.\n\n3. What evidence would justify adoption?\nDefine a small evaluation with representative data, a baseline, quality measures, and a failure threshold.\n\nThis prevents a team from rebuilding around every headline.\nThe durable skill is learning how to test an AI claim against your own workload before making an architecture decision.",
+      "image_prompt": "A clean three-step AI evaluation framework showing capability, architecture, and evidence, professional minimalist LinkedIn visual, no text",
+      "key_topic": "Evaluating AI announcements",
+      "template_mode": true,
+      "source_article": "Using AI Agents to Teach Robots Like Microduck to Walk in Simulation  NVIDIA Technical Blog - NVIDIA Developer",
+      "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOZ2xvNHk5ejQzcXU5NzBBdm1kSU0tOHJIa3NVeFdlWmJ2ektrdFlpbW1VOUhFWGRIcTdwS0xTRlJsa0lWYkRjMkM0eUpMYkdCUDlaRUJNalZ5OGRKbFhfOHRhNjhIQmY3bEVHUXlQbFJ6cFNxUC1GWlBSUjlpYUpPbVMtNnNXMmlCNk9XTzFnZXJoT3d1VnA0ZHR0WVgydEtPMHc4TjZB?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "A common mistake when setting up DataOps is treating the pipeline like a one‑time ETL job.\nIt looks solid at launch,\n but any change downstream forces a manual rebuild.\nDataOps is about applying DevOps principles to data: automated testing,\n versioned schemas,\n and continuous delivery of data assets.\n\nExample: a retail team wants daily sales aggregates.\nThey store the SQL script in Git,\n trigger a test suite on each commit,\n and let a CI/CD tool push the new view to Snowflake automatically.\n\nKey points to remember:\n- Keep data code in version control,\n just like application code.\n- Automate unit tests for transformations,\n and data quality checks.\n- Use a CI pipeline to deploy schema changes,\n and orchestrate jobs.\n\nMistake to avoid: hard‑coding environment variables inside notebooks and expecting the same pipeline to run in production.\nInstead, externalize config and let the pipeline inject the right values.\n\nRule of thumb: if a data change cannot be pushed with a single commit and a pipeline run,\n you are not fully practicing DataOps.\nWhat part of your current workflow could be automated next?",
+      "image_prompt": "",
+      "recovered": true,
+      "topic": "Data Engineering",
+      "concept": "DataOps and CI/CD for Data",
+      "post_type": "concept"
+    }
+  ]
+}
