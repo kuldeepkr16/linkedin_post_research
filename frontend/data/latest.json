@@ -1,26 +1,22 @@
 {
-  "generated_at": "2026-10-24T07:23:32.791532",
+  "generated_at": "2026-10-25T06:59:32.353721",
   "ai_provider": "groq",
-  "news_posts": [
-    {
-      "post_content": "Teaching a robot in simulation is useful because failure is cheap there.\n\nThe article “Using AI Agents to Teach Robots Like Microduck to Walk in Simulation NVIDIA Technical Blog - NVIDIA Developer” is a practical example of reinforcement learning: an agent tries actions, receives a reward signal, and adjusts its policy to improve future behavior.\n\nThe difficult part is the simulation-to-reality gap.\nA controller that works in a clean virtual world may fail when a real motor has delay, a sensor is noisy, or the floor has different friction.\n\nThree techniques help close that gap:\n\n1. Randomize the environment.\nVary mass, friction, delay, lighting, and sensor noise during training.\n\n2. Design rewards around the real objective.\nReward stable forward movement while penalizing falls, excessive energy use, and unsafe joint motion.\n\n3. Validate in stages.\nMove from simulation to hardware with speed limits, safety constraints, and measurable stop conditions.\n\nThe lesson applies beyond robotics: synthetic training works best when variation and failure modes reflect the environment where the system will actually operate.",
-      "image_prompt": "A clean educational diagram about Simulation to reality, professional minimalist LinkedIn visual, no text",
-      "key_topic": "Simulation to reality",
-      "template_mode": true,
-      "source_article": "Using AI Agents to Teach Robots Like Microduck to Walk in Simulation  NVIDIA Technical Blog - NVIDIA Developer",
-      "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOZ2xvNHk5ejQzcXU5NzBBdm1kSU0tOHJIa3NVeFdlWmJ2ektrdFlpbW1VOUhFWGRIcTdwS0xTRlJsa0lWYkRjMkM0eUpMYkdCUDlaRUJNalZ5OGRKbFhfOHRhNjhIQmY3bEVHUXlQbFJ6cFNxUC1GWlBSUjlpYUpPbVMtNnNXMmlCNk9XTzFnZXJoT3d1VnA0ZHR0WVgydEtPMHc4TjZB?oc=5",
-      "post_type": "ai_news",
-      "content_category": "AI / LLM",
-      "fallback_reason": "Historical generic fallback replaced with topic-specific educational fallback"
-    }
-  ],
+  "news_posts": [],
   "concept_posts": [
     {
-      "post_content": "A common mistake when setting up DataOps is treating the pipeline like a one‑time ETL job.\nIt looks solid at launch,\n but any change downstream forces a manual rebuild.\nDataOps is about applying DevOps principles to data: automated testing,\n versioned schemas,\n and continuous delivery of data assets.\n\nExample: a retail team wants daily sales aggregates.\nThey store the SQL script in Git,\n trigger a test suite on each commit,\n and let a CI/CD tool push the new view to Snowflake automatically.\n\nKey points to remember:\n- Keep data code in version control,\n just like application code.\n- Automate unit tests for transformations,\n and data quality checks.\n- Use a CI pipeline to deploy schema changes,\n and orchestrate jobs.\n\nMistake to avoid: hard‑coding environment variables inside notebooks and expecting the same pipeline to run in production.\nInstead, externalize config and let the pipeline inject the right values.\n\nRule of thumb: if a data change cannot be pushed with a single commit and a pipeline run,\n you are not fully practicing DataOps.\nWhat part of your current workflow could be automated next?",
-      "image_prompt": "",
-      "recovered": true,
-      "topic": "Data Engineering",
-      "concept": "DataOps and CI/CD for Data",
+      "post_content": "Imagine you have a CSV file with user activity logs and you need to calculate daily active users.\n\nYou could write a Spark SQL query like:\n\nSELECT date,\n COUNT(DISTINCT user_id) AS dau FROM logs GROUP BY date\n\nOr you could use the DataFrame API:\n\nval df = spark.read.csv(\"logs.csv\")\nval result = df.groupBy(\"date\")\n .agg(countDistinct(\"user_id\").as(\"dau\"))\n\nBoth give the same result,\n but the way you express them matters.\n\nKey points:\n\n- Spark SQL lets you write declarative SQL strings,\n which the optimizer parses and plans just like DataFrames.\n- The DataFrame API provides a programmatic,\n type‑safe way to build the same logical plan using Scala,\n Python or Java.\n- Under the hood both are converted to Catalyst logical plans,\n so performance is usually identical when used correctly.\n\nCommon mistake to avoid:\n\nMixing raw SQL strings with DataFrame transformations without caching can cause the optimizer to recompute the same data multiple times.\n\nRecommendation:\n\nPick the style that fits your team’s skill set,\n but stay consistent within a pipeline to keep the plan predictable.\n\nWhat has worked best for you when choosing between Spark SQL and the DataFrame API?",
+      "image_prompt": "A split-screen illustration showing a Spark SQL query on the left side and equivalent DataFrame API code on the right side, with a subtle background of data pipelines and a glowing Apache Spark logo, modern flat design, professional and clean aesthetic suitable for a technical LinkedIn post.",
+      "key_topic": "Apache Spark: Spark SQL vs DataFrame API",
+      "topic": "Apache Spark",
+      "concept": "Spark SQL vs DataFrame API",
+      "post_type": "concept"
+    },
+    {
+      "post_content": "A frequent slip when adding ML Insights in QuickSight is treating the forecast as a one‑time report.\n\nQuickSight’s ML Insights can automatically detect anomalies,\n and generate forecasts based on your dataset.\n\nIt works by training a lightweight model on the selected time series,\n and then projecting future values.\n\nExample: a sales dashboard that tracks daily revenue.\n\nQuickSight can predict the next 30 days and flag unexpected spikes.\n\n- Verify that the time field is in proper date format and continuous.\n- Choose a sufficient historical window; at least 3‑6 months,\n for reliable forecasts.\n- Enable anomaly detection only on metrics with enough variance; otherwise,\n you get noise.\n\nA common mistake to avoid is using a forecast built from sparse or irregular data;\n the model will produce misleading numbers.\n\nA good rule of thumb is to validate the forecast against a known period before trusting it for decisions.\n\nHave you checked the data quality before turning on ML Insights?",
+      "image_prompt": "A modern data analyst working on a laptop, AWS QuickSight dashboard on screen showing a forecast graph with highlighted anomalies, clean professional office background, realistic style, soft lighting.",
+      "key_topic": "AWS QuickSight: ML Insights and Forecasting",
+      "topic": "AWS QuickSight",
+      "concept": "ML Insights and Forecasting",
       "post_type": "concept"
     }
   ]
