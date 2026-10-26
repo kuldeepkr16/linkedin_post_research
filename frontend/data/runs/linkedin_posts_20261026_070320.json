@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-10-26T07:02:35.210000",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "Start by testing a locally built model before you rely on big‑cloud services.\nIt saves you time and lets you keep data inside your own network.\n\niFLYTEK just released Spark X2.6, a Chinese‑made AI that can write code and control robots.\nThe system runs on domestic hardware and understands Mandarin prompts out of the box.\n\nFor data engineers, that means you can generate ETL scripts or data‑validation code without sending anything to overseas servers.\nYou also get a tighter integration with local IoT devices that speak the same language.\n\nA quick way to try it is to feed a simple data‑pipeline description and let Spark X2.6 output the corresponding Python or SQL.\nCompare the result with what you would write manually, and you’ll see where the model helps and where you still need a human check.\n\nThe practical lesson is clear: keep an eye on homegrown AI options, especially when data residency or latency matters.\nThey can become a handy supplement to larger models, not a complete replacement.",
+      "image_prompt": "A futuristic Chinese research lab with a sleek AI robot typing code on a holographic screen, surrounded by glowing data pipelines and smart sensors, bright blue and white color palette, realistic high‑detail rendering, subtle Chinese cultural motifs in the background.",
+      "key_topic": "Homegrown AI",
+      "source_article": "iFLYTEK Spark X2.6 Chinas Homegrown AI for Coding and Robots - Intelligent Living",
+      "source_url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1ZNWdhb0M0MzhQY3BwWVRlLWJHTWJEZ3ZBcUVnQXR4cGpPU0NjNkVVTWx6MjRhcVZmWng2SlEtXzlBdzZXN3RXdkZucWM5Vl85cWxJTGF5UnUtVXV3VXUycWdRV0dGM1gxc2gwZHNzR09VR1V3eUowMXJTZw?oc=5"
+    },
+    {
+      "post_content": "Imagine you are setting up a data pipeline for a pharma client,\nand you need to decide which stock signals to prioritize.\nMost of the team points to the latest AI hype,\nbut a handful of billionaires are quietly loading up on Novo Nordisk.\nThe contrast is striking,\nbecause the drug maker shows steady revenue from diabetes treatments,\nnot flashy growth curves.\nFor data engineers, this signals an opportunity to build pipelines that surface stable,\nlow‑volatility metrics.\nStart by pulling earnings releases,\nFDA approval dates,\nand global prescription trends into a clean lake.\nApply simple moving averages and variance filters to flag stocks with consistent cash flow.\nCombine that with a watch on insider buying patterns – the billionaire activity is a strong insider signal.\nWhen you surface these indicators in a dashboard,\nanalysts can quickly see why a seemingly boring stock might be a hidden gem.\nThe practical takeaway is to treat non‑tech sectors as first‑class data sources,\nnot an afterthought.\nInvest time in reliable ETL for health‑care data,\nand you’ll be ready when the market shifts.\nA small shift in focus can turn routine data work into strategic insight.",
+      "image_prompt": "A modern data engineering workspace with multiple monitors displaying detailed Novo Nordisk stock charts, subtle billionaire silhouettes in the background, and pharmaceutical symbols like insulin vials, rendered in realistic style with high detail and soft lighting.",
+      "key_topic": "Novo Nordisk stock",
+      "source_article": "Why Billionaires Are Quietly Buying This Stock  Novo Nordisk NVO Stock Analysis El Clasico 2026 R4M4lxz8xc - Unisba Media",
+      "source_url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1jV3NkN3NwMXlyd25PZjROTi1pUnZYTlduQzBYZ0tSWGpTdkY2YThfNHAxeG1QWDhZUlZLc2Zuc0h5SjN3OEY4SlFjaHZlTzktYlJoS0laNDdUNkNIWnlBUTFrZTVVWnhSX29z?oc=5"
+    },
+    {
+      "post_content": "When you design a prompt, the size of the context window matters more than the model name.\n\nA recent benchmark from shattered.io compared Claude, Gemini and ChatGPT on context length.\n\nClaude and ChatGPT both support about 1 million tokens, while Gemini is limited to 400 k.\n\nThe context window is the amount of text the model can look at in a single pass.\n\nIf the window is too short, you have to split the input into chunks and re‑assemble the answer later.\n\nThat extra step adds latency, complexity, and can introduce errors when the model loses track of earlier information.\n\nUse this simple checklist to choose a model:\n\n1. List the longest document you need to process.\n2. Convert that size to tokens (roughly 4 characters per token).\n3. Match the token count to each model’s context limit.\n4. Multiply the token count by the model’s per‑token price to estimate cost.\n\nFact: Claude and ChatGPT support up to 1 M tokens; Gemini tops out at 400 k.\n\nInterpretation: For use‑cases like full‑document summarisation, the higher limits let you keep the whole text in memory, simplifying the pipeline.\n\nRecommendation: Select the model whose context window comfortably exceeds your maximum input and verify that the token cost fits your budget.",
+      "image_prompt": "A clean, futuristic office scene with three large holographic displays labeled \"Claude\", \"Gemini\", and \"ChatGPT\". Each screen shows a scrolling stream of text tokens, illustrating massive context windows. The background has subtle circuit patterns, and the lighting is soft blue, emphasizing a tech‑forward but professional atmosphere.",
+      "key_topic": "Context window trade-offs",
+      "source_article": "Claude vs Gemini vs ChatGPT 1M vs 400K Context 2026 - shattered.io",
+      "source_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQRTR6ZnVyRllKTXNSTnhlczlwaXRqNlltYXV4cDN6ZVlyZV9qZ1pJUktKdnVzTndXUEVhYkJ3R1pOZENjbk4ySDBXUWdlRTQxS2g2QVBWU1g3SkVuUHhQdlNMZDBfekE2S3IzZE9SRVA5UDgydzN3VmJXdy1BejNsREJiTkVjUjlhOU54SU5ubw?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "Imagine you need to list an employee hierarchy in a single query.\nYou have a table Employees with columns EmployeeID,\n ManagerID,\n and Name.\nYou want to see each employee together with their chain of managers.\nA Common Table Expression,\n or CTE,\n lets you define a temporary result set that you can reference later in the same statement.\nWhen the CTE refers to itself, it becomes a recursive CTE, perfect for hierarchical data.\n- Define the anchor query that returns the top‑level rows.\n- Union all with the recursive part that joins the CTE back to the base table.\n- Include a termination condition, usually a check that the parent key is not null,\n to avoid infinite loops.\nA common mistake is forgetting the termination condition,\n which can cause the query to run forever and crash the database.\nRule of thumb: always test the recursive CTE with a small data set and verify the row count matches expectations.\nWhat’s the most surprising hierarchy you’ve had to model with SQL?",
+      "image_prompt": "A clean, professional illustration of a database table called Employees with columns EmployeeID, ManagerID, and Name. Show a visual hierarchy tree emerging from the table, with arrows pointing from employees to their managers, highlighting the concept of recursive relationships. Use a muted corporate color palette, simple line art, and clear labeling. Include a subtle caption \"Recursive CTE\" in a modern sans‑serif font.",
+      "key_topic": "SQL: Common Table Expressions (CTEs) and Recursive CTEs",
+      "topic": "SQL",
+      "concept": "Common Table Expressions (CTEs) and Recursive CTEs",
+      "post_type": "concept"
+    },
+    {
+      "post_content": "A frequent mistake is running VACUUM only once a month and assuming the database stays healthy.\n\nIn reality PostgreSQL accumulates dead rows every time data is updated or deleted.\n\nIf you ignore those,\n query planners start using outdated statistics and performance degrades.\n\nHere’s a quick checklist you can follow after any batch load or heavy DML.\n\n- Run ANALYZE on tables that changed more than 10 % of rows.\n- Schedule a regular VACUUM (or autovacuum) that targets tables with high update/delete rates.\n- Verify that autovacuum settings are not disabled for critical tables.\n\nExample scenario: after loading a month’s sales data into the sales table,\n you execute ANALYZE sales;\n then you run VACUUM (FULL) only if the table size grew beyond 30 %.\n\nCommon mistake to avoid: turning off autovacuum because you think manual VACUUM is enough.\n\nRule of thumb: keep autovacuum on,\n and supplement it with targeted ANALYZE after large data changes.\n\nWhat’s the most surprising performance gain you’ve seen after a simple vacuum‑analyze cycle?",
+      "image_prompt": "A modern office setting with a data engineer sitting at a desk, looking at a large monitor displaying PostgreSQL icons. On the screen, a visual checklist appears with bullet points labeled VACUUM, ANALYZE, and AUTOVACUUM. The background shows a subtle graph indicating performance improvement. The style is clean, professional, and realistic, suitable for a LinkedIn post illustration.",
+      "key_topic": "PostgreSQL: VACUUM and ANALYZE Operations",
+      "topic": "PostgreSQL",
+      "concept": "VACUUM and ANALYZE Operations",
+      "post_type": "concept"
+    }
+  ]
+}
