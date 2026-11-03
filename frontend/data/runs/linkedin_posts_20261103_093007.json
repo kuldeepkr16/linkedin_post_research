@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-11-03T09:29:40.122910",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "Start with a practical lesson: When you need to join time‑series data,\nuse Spark 4.3's ASOF JOIN instead of a manual window hack.\nIt lets you match each row to the nearest earlier timestamp.\nNo extra code,\nand it runs in the optimizer.\nAnother win: Python UDFs can now be compiled to native SQL.\nWrite your function in Python,\nSpark translates it,\nso you avoid the Python overhead.\nThat means faster pipelines without rewriting logic in Scala.\nJSON_TABLE support brings flexible parsing of nested JSON directly in SQL.\nYou can flatten arrays and objects without a separate preprocessing step.\nFor slowly changing dimensions,\nthe new SCD Type 2 auto CDC feature tracks changes automatically.\nIt works out of the box for simple cases,\nbut you need to enable a flag for complex key handling.\nBe aware that some legacy CDC setups may break,\nso test the flag before production.\nOverall, Spark 4.3 gives you more declarative power,\nless glue code,\nand better performance.\nTry the ASOF JOIN on a recent log dataset\nand see how the query plan simplifies.",
+      "image_prompt": "A clean professional illustration of a data engineer's desk with a laptop screen showing the Apache Spark logo, code snippets of an ASOF JOIN query, JSON_TABLE syntax, and a diagram of SCD Type 2 auto CDC, subtle background of cloud data pipelines, realistic style.",
+      "key_topic": "Spark 4.3 features",
+      "source_article": "Apache Spark 4.3 What Developers Need to Know",
+      "source_url": "https://www.reddit.com/r/dataengineering/comments/1xlwav7/apache_spark_43_what_developers_need_to_know/"
+    },
+    {
+      "post_content": "When you choose an LLM, the first question isn’t which model scores highest on a benchmark.\nIt’s whether the model’s cost fits the value you need.\n\nGemini 4 Carbon fell just behind Claude on a standard benchmark, yet its price‑per‑token makes it cheaper overall, according to 9to5Google.\nThat contrast shows performance and cost can diverge.\n\nThink of a model’s output quality as one axis and its operating expense as the other.\nA higher score doesn’t automatically translate into better ROI.\nYou need a simple decision matrix.\n\n**LLM selection checklist**\n1. Define the target task and acceptable quality threshold.\n2. Measure benchmark scores for that task.\n3. Calculate cost per token (or per API call).\n4. Estimate total monthly usage.\n5. Compute expected monthly spend = cost per token × tokens per month.\n6. Compare spend against budget and the quality gain.\n\n**Fact:** Gemini 4 Carbon’s benchmark score is slightly lower than Claude’s.\n**Interpretation:** For many workloads the lower cost outweighs the modest quality gap, delivering higher value.\n\nMy recommendation is to run this checklist for every new model you consider, rather than defaulting to the top‑scoring paper.\nThat way you balance performance with real‑world economics.",
+      "image_prompt": "A clean, professional illustration showing two AI model icons on a balanced scale; one side labeled 'Performance' with a high benchmark number, the other side labeled 'Cost' with a low price tag; background is a subtle gradient of tech blue; style is flat vector with minimal shadows, suitable for a LinkedIn post.",
+      "key_topic": "LLM cost‑value tradeoff",
+      "source_article": "Gemini 4 Carbon lags just behind Claude in benchmark, but wins in value - 9to5Google",
+      "source_url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBzNFpROWhBTVBfTEtleVh1b1ZNdWIwaGRCRWtZUjR5YkE4TlhBUHV1YWFCYUF5WE1PQ29vb3BkNXR0bkdSRFdWWWRuZTB6eXJEOGk3TDdCVXZBczBGYl9SOFJJcTdXMUJLY0txYQ?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "Imagine you have a sales dashboard that shows revenue by product category.\nYou want to let users switch between viewing revenue in USD or EUR without rebuilding the visual.\nA QuickSight calculated field can do the conversion,\nand a parameter lets the user pick the currency.\n\nExample:\nCreate a parameter called CurrencyChoice with values USD and EUR.\nCreate a calculated field named RevenueConverted that uses a case statement:\n\nifelse({CurrencyChoice} = 'USD', {Revenue}, {Revenue} * 0.85)\n\nNow the same chart can display either currency based on the selector.\n\nKey points:\n- Calculated fields are expressions that run on the data set at query time.\n- Parameters are user‑controlled inputs that can be referenced inside calculated fields.\n- Combining them lets you build dynamic, reusable visuals without hard‑coding values.\n\nCommon mistake:\nHard‑coding a conversion rate inside the visual instead of using a parameter,\nwhich forces you to edit every chart when the rate changes.\n\nRule of thumb:\nDefine the conversion rate as a separate parameter or dataset,\nand reference it in your calculated field so a single update propagates everywhere.",
+      "image_prompt": "A modern data analytics dashboard displayed on a laptop screen, showing a bar chart of sales revenue with a dropdown selector labeled 'Currency' offering USD and EUR options. The interface uses AWS QuickSight style colors and icons, clean lines, flat design, and a subtle background. Include a small caption 'Dynamic Calculated Field & Parameter' in professional font. The scene is bright, professional, and focused on data visualization.",
+      "key_topic": "AWS QuickSight: Calculated Fields and Parameters",
+      "topic": "AWS QuickSight",
+      "concept": "Calculated Fields and Parameters",
+      "post_type": "concept"
+    },
+    {
+      "post_content": "One of the first things I see when reviewing new code is a property defined without a setter,\n but the class still tries to assign to it.\nThat leads to an AttributeError at runtime and wastes debugging time.\n\nA property in Python is just a pair of methods wrapped by the @property decorator,\n optionally complemented by @<name>.setter.\nThink of it as a controlled gateway to an attribute.\n\nExample:\n\nclass Rectangle:\n def __init__(self, width, height):\n self._width = width\n self._height = height\n\n @property\n def area(self):\n return self._width * self._height\n\n @area.setter\n def area(self, value):\n raise AttributeError(\"area is read‑only\")\n\nIn this snippet the area property is read‑only,\n so any attempt to set rect.area = 20 will raise.\n\nChecklist for safe property use:\n- Define a private backing variable (usually with a leading underscore).\n- Provide both getter and setter only when mutation is intended.\n- Keep the setter logic simple;\n avoid side effects that break invariants.\n\nCommon mistake: forgetting the setter when you need to update the value,\n which results in the same AttributeError shown above.\n\nRule of thumb: if you expose a property,\n decide today whether it should be read‑only or mutable,\n and implement the matching decorator pair.",
+      "image_prompt": "",
+      "recovered": true,
+      "topic": "Python",
+      "concept": "Property Decorators and Descriptors",
+      "post_type": "concept"
+    }
+  ]
+}
