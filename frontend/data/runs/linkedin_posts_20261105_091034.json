@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-11-05T09:09:48.259310",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "When you need to combine structured and unstructured data in a single query,\nuse BigQuery's new multimodal features.\nGoogle just announced that these capabilities are now built into Google Analytics,\nso you can run SQL across pageviews, event logs, and even text fields without moving data.\nThe practical impact is simple.\nYou can pull raw clickstream logs,\njoin them with custom dimensions stored as JSON,\nand run sentiment analysis on user comments,\nall inside one BigQuery job.\nFor a data engineer this means fewer pipelines,\nfaster insight cycles,\nand lower cost because you avoid exporting data to separate tools.\nA quick way to start is to enable the BigQuery export in GA,\nthen write a query that uses the EXTRACT_JSON function to flatten custom payloads,\nand apply the ML.PREDICT function on any text column.\nKeep your schemas flexible,\nand treat the multimodal layer as a single source of truth.\nWhen you adopt this approach,\nyou’ll spend more time answering questions\nand less time stitching data together.",
+      "image_prompt": "A sleek modern workspace showing a data engineer at a laptop, with a large transparent screen displaying a flowchart that connects Google Analytics icons to BigQuery tables, highlighting multimodal data (structured tables, JSON blobs, and text snippets) in a clean blue and white tech aesthetic, high detail, realistic style.",
+      "key_topic": "Multimodal BigQuery",
+      "source_article": "Google brings multimodal BigQuery analytics into GA - IT Brief Asia",
+      "source_url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOU3NwZ21tTk42Qm9XeHB3TzZaWXZuc01wLVlkYjgwX0JobFdUU1NLVkt1NVRzZmdPWTVBVDRVT3ZVS1ZBZEFRSzRFdG80RnZyZWdsNUZraWtLeGlUNk5pTFJpTEMxM0N1VVJwWldvOTVjR3FmTEN0WHhHQ2VOQmxIQUNjMlQ?oc=5"
+    },
+    {
+      "post_content": "Imagine you are preparing a nightly batch job that runs on Spark 3.5,\n and you notice the job stalls during large joins.\n You decide to wait for a newer runtime.\n Now picture the same job after moving to Spark 4.3 in Databricks Runtime 19,\n and the optimizer reduces shuffle overhead.\n The result is a job that finishes minutes earlier.\n This version also brings better support for Python UDFs,\n so you can write cleaner code without sacrificing speed.\n The new Adaptive Query Execution handles skew more aggressively,\n which means fewer manual tuning steps.\n For data engineers, the upgrade path is simple – just select Runtime 19 in the workspace.\n No code changes are required for most workloads.\n Take advantage of the built‑in cost‑based optimizer improvements,\n and you’ll see faster pipelines and lower cloud spend.\n A quick test on a sample dataset can confirm the gains before a full rollout.\n In practice, the new release lets you focus on business logic rather than performance hacks.\n If you haven’t tried Spark 4.3 yet, schedule a small pilot and compare runtimes.\n The contrast between the old and new experience is often enough to justify the switch.",
+      "image_prompt": "A modern data engineering workspace with a sleek laptop screen showing the Apache Spark 4.3 logo and Databricks Runtime 19 dashboard, bright natural lighting, clean desk, realistic digital illustration, professional and tech‑focused atmosphere",
+      "key_topic": "Apache Spark 4.3",
+      "source_article": "Introducing Apache Spark 4.3 - Now available in Databricks Runtime 19 - Databricks",
+      "source_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxObXpqN2xWVWgtWGw0Q3dFMXVnZWM1TUF4U2c4WjR6cHJsS0pFQnRibWx1dDFFbEROLTUxOUZBY01jdllZakpLTE5ZelVLVldxNnc1ZFFLVmxsY2tDb0luVU9ub1dVM2pNUlJpc0JsN2JPTDc2WGR0bVN4TjF3RHN0MkdwLVdlaktRTldmOGNJUFI0Um9XeTVGSzJoOA?oc=5"
+    },
+    {
+      "post_content": "Cost efficiency in AI starts with understanding where the expense really comes from.\n\nA recent XDA measurement showed that running a local language model on a modest desktop used less electricity than a single $20 monthly subscription to ChatGPT,\nClaude or Gemini.\n\nA local LLM is a copy of the model that you host on your own hardware instead of calling an API.\n\nThe subscription fee you pay to a provider covers the compute,\ncooling, and software maintenance they handle for you.\n\nWhen you run the model yourself, the only direct cost is the power your CPU or GPU consumes.\n\nTo decide which option is cheaper, follow a simple checklist.\n\nFirst, note the model’s peak power draw in watts (you can read this from the hardware spec or monitoring tools).\n\nSecond, multiply that by the expected hours of use per month.\n\nThird, apply your local electricity rate (cents per kilowatt‑hour) to get a monthly energy cost.\n\nFourth, add a rough depreciation estimate for the hardware (for example, $0.05 per hour of use).\n\nFinally, compare that total with the subscription price you would pay for the same performance level.\n\nFact: the XDA test found the energy cost was lower than $20 per month for the hardware used.\n\nInterpretation: for workloads that run continuously or can tolerate a slightly older model, local deployment can beat a SaaS subscription on price.\n\nKeep in mind that this does not include the time needed for setup, security hardening, or occasional model updates.\n\nIf you have predictable demand, run a small open‑source model locally and run the cost check before signing up for a cloud service.",
+      "image_prompt": "",
+      "recovered": true,
+      "source_article": "I measured my local LLMs power bill and it costs less than a single 20 ChatGPT, Claude or Gemini subscription - XDA",
+      "source_url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQQVl4QVozUWdPZDR5bjByTVNnbnpQY3N4V1RId1dTdVFzTmhnT3g5endjRzZtdWtQR2RjVk56ZVFkbGlPSU9hOHFaTm9RaC1zTmpjQWJGQktxQlp5OHo3UzBqdHRGb09nMWxLbmtsQ0ZZckVmQWR3TWZVWU5HTDBVOGVNeTZkbUdsSnY4NFFCQ3M3UFhQTnFfbE5MblpyYWx0NkduMldGRFBOT1NGQU84YUk3X1Q0V3ZMRmVJV1hhampxRUVmbnAybnhYSQ?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "One common mistake is to pick a streaming framework for a workload that only needs nightly batch jobs.\nIt sounds efficient at first,\nbut you end up over‑provisioning resources and adding unnecessary complexity.\nConsider an e‑commerce site that needs to update inventory in near real time for the checkout experience.\nThat is a classic streaming case.\nAt the same time, the same site runs a nightly report that aggregates sales for the finance team.\nThat is a batch case.\nTo decide which approach fits, use this quick checklist.\n- Does the business require results within seconds or minutes?\n- Are you comfortable handling out‑of‑order or missing events?\n- Is the data volume high enough to justify a continuous pipeline?\nA typical pitfall is to force streaming on the nightly report just because the infrastructure is already set up.\nThat leads to higher latency and harder debugging.\nRule of thumb: match the latency requirement to the processing model.\nIf you can wait until the end of the day, stick with batch.\nIf you need instant feedback, go streaming.\nWhat latency does your most critical use case have?",
+      "image_prompt": "A split-screen illustration showing a real-time data stream on the left, with flowing arrows representing events entering a dashboard, and a batch processing pipeline on the right, with stacked files moving into a data warehouse; include icons for Kafka, Spark Streaming, and nightly ETL jobs; modern flat design, bright colors, clear labels, suitable for a LinkedIn post about stream vs batch processing.",
+      "key_topic": "Data Engineering: Stream Processing vs Batch Processing",
+      "topic": "Data Engineering",
+      "concept": "Stream Processing vs Batch Processing",
+      "post_type": "concept"
+    }
+  ]
+}
