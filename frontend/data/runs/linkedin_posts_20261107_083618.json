@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-11-07T08:35:32.622418",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "Imagine you are asked to add a sentiment score to a customer feedback table stored in BigQuery.\nYou could export the data to a notebook,\nrun a pandas‑based model,\nthen load the results back.\nOr you could call the new BigQuery AI functions directly from pandas,\nkeeping everything in place.\nThe announcement from Google Cloud makes that option painless.\nBigQuery now lets you invoke pre‑built models with a single pandas expression.\nNo need to manage separate model servers or move data across environments.\nFor a data engineer, that means fewer steps and less chance of mismatch.\nYou write a familiar pandas line,\nadd .ai_predict('sentiment'),\nand the result lands back in your DataFrame.\nThe code stays readable,\nthe query runs where the data lives,\nand you benefit from BigQuery’s scaling.\nA practical tip: start by testing the function on a small slice using head(),\nthen scale up once you confirm the output.\nIt also works nicely with existing pipelines that already use pandas‑gbq.\nOverall, this bridges the gap between exploratory notebooks and production‑grade analytics without adding new tools.\nIf you haven’t tried it yet, give the AI functions a quick spin on a sandbox table and see how much friction disappears.",
+      "image_prompt": "A modern data engineer seated at a desk with a laptop, the screen shows BigQuery UI and a pandas code snippet calling an AI function, subtle AI icons floating above, soft cloud background, clean professional illustration style, high detail, neutral color palette.",
+      "key_topic": "BigQuery AI Functions",
+      "source_article": "BigQuery AI Functions in Pandas - Google Cloud",
+      "source_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOT3dGVW9UOGFnblhBTmh0dkFGRVZ6TXdabk8xdEg1RmNfSXAxMzFQbEl3U2ZnYTYwdkRFbWEwbDVMSl96X0dDc0thVHI5cXlkVEl3ZGxmZjQxbUxXaVJsUHdySXZQMGZINHVzNHY4N0FIeTQyVlZobDlQa0hDX1hFTDI3bjVKY1hBd1NwaFV3?oc=5"
+    },
+    {
+      "post_content": "Choosing the right model for a classification task can dominate both performance and budget.\n\nRagic recently added automatic JEV selection to its AI agents,\ncutting the cost of running classifiers for small businesses.\n\nThe core idea is simple:\nlet the system evaluate several lightweight models and pick the one that meets a target accuracy while using the fewest resources.\n\nIn practice you can replicate this by building a small model zoo,\ndefining a clear metric (e.g., F1 score ≥ 0.85),\nand running a short validation loop to compare compute time and cost on a validation set.\n\nA quick checklist:\n- List candidate models (tiny, base, medium).\n- Set a performance threshold.\n- Measure inference latency and estimated cloud cost on a validation set.\n- Choose the first model that meets the threshold.\n\nWhat we know: Ragic’s automatic JEV selection actually reduces expenses for classification workloads,\naccording to AiThority.\n\nWhat this means: you don’t need to commit to a single large model upfront;\na systematic selection process can keep projects affordable.\n\nMy recommendation is to embed a model‑selection step in every new classification pipeline,\neven if you only have a single dataset.\nIt pays off in lower bills and faster iteration.",
+      "image_prompt": "A sleek modern office workspace with a laptop screen showing a colorful chart of AI model selection, a coffee mug, and a notepad with a checklist; soft natural lighting, realistic style, high resolution, minimalistic design.",
+      "key_topic": "Model selection cost",
+      "source_article": "Ragic Makes AI Agents More Affordable With Automatic Jev Selection for Classification Tasks - AiThority",
+      "source_url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNSHBMcmdEd1Rud0JTU2tyX2Q4VS1BN2ZVT2RMZ1JwQXlkY0pXN1VuRWFBT0xlQTlDWGRLSXhBSUNsOWJTMDVHX2x2RUFTVU8tVldLS1hLMmtaQTl5V21KYXdFelBuNlY0Ql9MbFg5UnBWTUpDaWtCdGpWMlpFbXQyMkNLSlFVNjN4RDFmLW16MC11NzlZV0hUQ3FWWDk4QVF3dm1iT3BXbG1yWEliYXZhd0dqSjRnV1ZFVXo3TjBwZlZuWXJxT0F1QjNJdw?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "Imagine a product catalog table where each row stores a product description.\n\nYou need to let users search for keywords like “wireless headphones” or “noise cancelling”.\n\nInstead of using LIKE '%wireless%' you can create a tsvector column that tokenizes the text.\n\nPostgreSQL then matches the query with the pre‑processed tokens.\n\nHere’s a quick walk‑through.\n\nCreate a generated column:\n\nALTER TABLE products ADD COLUMN description_tsv tsvector GENERATED ALWAYS AS (to_tsvector('english',\n description)) STORED;\n\nAdd a GIN index on that column.\n\nCREATE INDEX idx_products_desc ON products USING GIN (description_tsv);\n\nNow a search becomes:\n\nSELECT * FROM products WHERE description_tsv @@ to_tsquery('english',\n 'wireless & headphones');\n\nThe engine can use the index and return results instantly.\n\nKey points:\n\n- to_tsvector converts raw text into a searchable vector.\n- to_tsquery parses the search string into the same format.\n- GIN indexes make the lookup fast even on millions of rows.\n\nCommon mistake:\n\nStoring the raw text in the index without normalizing it, which leads to mismatched tokens and poor performance.\n\nRecommendation:\n\nAlways store a generated tsvector column and index it, and keep the language parameter consistent across to_tsvector and to_tsquery.",
+      "image_prompt": "A modern flat‑style illustration showing a PostgreSQL elephant logo beside a magnifying glass hovering over a block of text, with small vector icons representing tokens floating around, conveying the idea of full‑text search inside a database. Use a clean color palette with blues and whites, simple lines, and no text overlay.",
+      "key_topic": "PostgreSQL: Full-Text Search Capabilities",
+      "topic": "PostgreSQL",
+      "concept": "Full-Text Search Capabilities",
+      "post_type": "concept"
+    },
+    {
+      "post_content": "A frequent mistake when setting up QuickSight is loading data into SPICE once and then assuming the visuals stay current.\n\nSPICE is an in‑memory cache that lets you query data fast,\n it stores a snapshot of your source tables at the time of import.\n\nIf the source data changes,\n SPICE won’t see those updates until you refresh the dataset.\n\nExample: you have a sales CSV in S3 that you import into SPICE each morning.\n Your dashboard shows yesterday’s numbers,\n but the file receives new rows at 2 PM.\n Without a refresh,\n the dashboard still shows the stale snapshot.\n\n- Refresh frequency should match how often the source changes.\n- Use the “Refresh Now” button for ad‑hoc updates,\n and schedule automatic refreshes for regular pipelines.\n- Monitor SPICE storage limits;\n a failed refresh can leave you with old data.\n\nA common mistake to avoid is relying on the default 24‑hour refresh interval when your data arrives multiple times a day.\n\nA good rule of thumb is to set the refresh interval to half the expected data latency.\n What refresh cadence works best for your dashboards?",
+      "image_prompt": "A clean, modern illustration of AWS QuickSight SPICE engine as a glowing, transparent data cube in front of a stylized data pipeline.\n The pipeline shows arrows moving from a cloud storage bucket into the cube, then arrows exiting to a dashboard screen.\n Use a professional tech color palette of blues and teal, with subtle shadows and minimalistic icons.\n Include subtle text labels: \"Source Data\", \"SPICE Cache\", \"Dashboard\".\n The style should be vector‑style, crisp lines, suitable for a LinkedIn post header.\n No people, no logos, no emojis.",
+      "key_topic": "AWS QuickSight: SPICE Engine and Data Refresh",
+      "topic": "AWS QuickSight",
+      "concept": "SPICE Engine and Data Refresh",
+      "post_type": "concept"
+    }
+  ]
+}
