@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-11-08T08:09:19.253511",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "If you need automated report distribution, start by matching the feature set to cost, not brand.\n\nImagine a company with Azure SQL,\nand Power BI Pro dashboards.\nThey lack automation and subscription capabilities.\nIn the past they used SSRS or Crystal Reports.\n\nSSRS can generate paginated reports and supports dynamic subscriptions.\nBut it requires a SQL Server license that can cost $8 k per core,\nand Microsoft is de‑prioritising SSRS.\nYou would be paying for a product that may not get new features.\n\nPower BI Paginated Reports run on the Power BI service.\nYou can start with a modest Fabric capacity (F2) for a few thousand dollars a year.\nIf demand spikes you scale to a larger node (F4) and still stay below the two‑year cost of a SQL Server license.\nThis also gives you immediate access to the rest of the Fabric ecosystem.\n\nFor most teams, moving to Power BI Paginated Reports on Fabric provides the needed automation,\nlower upfront cost,\nand a future‑proof path.\nOnly consider SSRS if you already own a SQL Server license and have heavy on‑premises dependencies.\n\nEvaluate the total cost of ownership and the roadmap of the tools before you commit.\nChoose the option that lets you deliver reports today without locking yourself into a legacy product.",
+      "image_prompt": "A clean professional office scene with a laptop showing a data dashboard, an Azure cloud icon floating above, and a printed report document on the desk, soft lighting, realistic style.",
+      "key_topic": "Reporting platform choice",
+      "source_article": "Reporting platform advice?",
+      "source_url": "https://www.reddit.com/r/dataengineering/comments/1xqlxiy/reporting_platform_advice/"
+    },
+    {
+      "post_content": "Imagine you need to run a similarity search over product descriptions for a recommendation engine.\nYour current pipeline moves the text into a dedicated vector store,\nadds latency,\nand requires extra ops work.\nNow picture the same query running straight inside PostgreSQL,\nusing the new pg_vectorsearch extension.\nThe contrast is clear – you keep data in one place and avoid the sync hassle.\n\nTiger Data just open‑sourced pg_vectorsearch.\nIt adds vector indexes and similarity operators right to the core engine.\nNo need to spin up a separate service or learn a new query language.\nYou write standard SQL,\nstore embeddings in a column,\nand let the extension handle the nearest‑neighbor search.\n\nFor data engineers this means fewer moving parts and lower maintenance overhead.\nIt also simplifies security reviews because everything stays inside the database.\nIf you already use PostgreSQL, try creating a vector column,\nload a few embeddings,\nand run a simple SELECT … ORDER BY vector <-> query_vector LIMIT 5.\nYou’ll see how close the results feel compared to a specialized vector DB.\n\nThe practical takeaway is to evaluate pg_vectorsearch when you need vector search but want to stay within your existing relational stack.",
+      "image_prompt": "A clean, professional office scene with a laptop screen showing the PostgreSQL logo and a visual representation of vectors and search arrows, a notebook with handwritten diagrams of vector embeddings, soft natural lighting, modern minimalist style, suitable for a tech article about the pg_vectorsearch open-source extension.",
+      "key_topic": "PostgreSQL vector search",
+      "source_article": "Tiger Data Releases Open Source pg_vectorsearch Extension for Vector Search in PostgreSQL - news.lavx.hu",
+      "source_url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNR3hUZVR4T3RISThROVpMYVZHSy1aZzVHbzZ2d2FJTGhmVUU2QjFOU3NUckt2RkgxaGdzX1BlOHZCb3JuUzJGZi1OT2R6d1JNWTRONFZ2Wi1EeEdzNkZDbE4xeTdVUnZjQXB1c0VTTXZpZFhGeGxYUHVtbzVEVkE5TXllS3h5UGZXZm50eGxEN09rY21wRGN1SHU2NVFJMGlxZU9TUzBvdEpFLXZ2M1N2RFltZUU4eExjRFE?oc=5"
+    },
+    {
+      "post_content": "When IT teams drown in repetitive tickets\nservice quality suffers.\nA simple way to break that cycle is to let an AI agent handle routine queries.\nCielo did exactly that.\nIt deployed a Microsoft‑built AI assistant that cut its ticket volume by more than half\naccording to Microsoft.\nThe idea is to use the AI as a first‑line triage that matches user requests to documented solutions.\nThis works best when the knowledge base is structured and kept up to date.\nHere is a quick checklist you can apply today.\nIdentify the top five recurring issues in your ticket logs.\nGather the official resolution steps for each issue in a searchable format.\nChoose an LLM that supports retrieval‑augmented generation or fine‑tuning.\nConnect the model to your ticketing platform so it can suggest answers or close tickets automatically.\nTrack metrics such as ticket count, first‑response time, and false‑positive closures.\nFact: Cielo reduced tickets by more than 50 % after the AI agent went live.\nInterpretation: Similar gains are realistic if you start small, automate only well‑defined queries, and monitor performance.\nRecommendation: Map your top ticket categories and pilot an AI bot on a single category before scaling.",
+      "image_prompt": "A modern office workspace with a sleek digital assistant hologram hovering over a support ticket dashboard, realistic lighting, professional color palette of blues and greys, subtle depth of field, high detail, suitable for a corporate AI article illustration.",
+      "key_topic": "AI-driven IT support",
+      "source_article": "Cielo increases IT support efficiency with AI agent and reduces tickets by more than 50 - Microsoft Source",
+      "source_url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOZmZMMlRsTjZzRWhHWVNtWVMwTEJwU0taeVRjaGZReEVwZ2prRVlTOTFNUjl0T3lCaDc2TnhJRGhKTWlrMm5UaTAyMU1KY3FhLTJUMkJfenZyZTBpTUJiaEFWV2FiaXAzUXh4eUZQc3gzVXM2SzJVdVhyenNMeFI2a1JtNGEwLUZvaDBaZnI4Z3BHY2RlaDVkTEhoZHFlOUYzOTZNak1waVNYbjFoYVJZVGZOMWtuWEEwTDRlVnJZZ3ZBajdXZTZTVDBTWE1lZUZiMjBUVW5XLUVXNmFNNWRtWXRn?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "Example: A data pipeline processes 2 TB of logs each night on a cloud data warehouse.\nThe job runs on a large,\n on‑demand compute cluster and costs $500 per run.\nThe team sees the monthly bill rise above expectations.\nInstead of leaving it as‑is,\n they look at three simple levers.\n\n- Choose spot or preemptible instances for non‑critical stages.\n This can cut compute spend by 60 % or more.\n- Enable auto‑scaling and set idle timeouts.\n This reduces idle cost dramatically.\n- Partition and prune data early.\n Smaller scans mean less processing time and lower storage I/O charges.\n\nA common mistake is to over‑provision resources based on peak load and never adjust them.\nThat creates a constant drag on the budget.\n\nRule of thumb: Review usage metrics weekly and right‑size any component that sits below 30 % utilization for three consecutive days.\nWhat steps will you take to trim cloud data costs in your next sprint?",
+      "image_prompt": "",
+      "recovered": true,
+      "topic": "Data Engineering",
+      "concept": "Cost Optimization in Cloud Data",
+      "post_type": "concept"
+    },
+    {
+      "post_content": "Many people enable Row-Level Security and then forget to attach any policy,\nleaving the table completely locked for everyone.\nThis simple oversight turns a security feature into a denial‑of‑service for your own users.\n\nHere is a quick checklist you can run after you create a policy.\n\nExample: a sales table where each rep should only see rows that belong to them.\nYou create a policy that filters on the rep_id column.\n\n- Define the policy with a USING clause that references the correct column,\nand test it with a role that mimics the end‑user.\n- Grant the role the SELECT privilege on the table,\notherwise the policy never gets evaluated.\n- Verify the policy works by connecting as the role and running a simple SELECT,\nchecking that only the expected rows appear.\n\nCommon mistake to avoid: using a static value in the USING clause, such as rep_id = 1,\nwhich gives every user the same view.\n\nRule of thumb: always validate a new RLS policy with a low‑privilege role before rolling it out to production.",
+      "image_prompt": "A clean, modern illustration of a PostgreSQL database icon with a shield overlay, representing Row-Level Security.\nInclude a stylized table with rows highlighted only for specific users.\nUse a professional color palette of blues and grays, with subtle gradients.\nShow a checklist beside the shield, with check marks.\nThe style should be flat vector art, suitable for a technical LinkedIn post.\nNo text or logos, just the concept visualized clearly.",
+      "key_topic": "PostgreSQL: Row-Level Security Policies",
+      "topic": "PostgreSQL",
+      "concept": "Row-Level Security Policies",
+      "post_type": "concept"
+    }
+  ]
+}
