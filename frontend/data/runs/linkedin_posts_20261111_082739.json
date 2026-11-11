@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-11-11T08:26:42.360786",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "Imagine you're handling a nightly analytics batch on a server that struggles with read‑only queries.\nNow compare that to a system powered by the new AMD EPYC 9965,\nwhich can handle far more transactions per second.\nThe benchmark from ServeTheHome shows a noticeable jump in read‑only TPS.\nThat kind of boost can turn a bottleneck into a smooth pipeline.\nFor data engineers it means we can run more concurrent dashboards without adding more nodes.\nIt also gives room to increase query complexity while keeping latency low.\nA practical step is to profile your current PostgreSQL read workload and map it against the EPYC 9965 numbers.\nIf you see a gap, consider a migration plan that focuses on CPU and memory scaling.\nDon't forget to adjust work_mem and max_parallel_workers to match the new core count.\nA small change in configuration can unlock most of the hardware potential.\nFinally, run a quick A/B test on a staging environment before committing to production.\nSeeing the real‑world impact helps justify the investment.\nIn short, the EPYC 9965 is a strong candidate for any read‑heavy PostgreSQL deployment.\nEvaluate it when you plan your next capacity upgrade.",
+      "image_prompt": "A modern data center rack with a sleek server labeled AMD EPYC 9965, glowing PostgreSQL elephant logo floating above it, data streams represented by thin blue lines moving from the server to multiple monitor screens showing analytics dashboards, realistic lighting, high detail, professional tech illustration style.",
+      "key_topic": "AMD EPYC PostgreSQL",
+      "source_article": "AMD EPYC 9965 PostgreSQL Read Only Transactions per Second - ServeTheHome",
+      "source_url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQd3BQbmtSd0tiY3lWelRXcFc0Zm1uNi1YQXkxY1h2cnloMUdzbTNQYWdWeEk2Mmh4RjMzeHMzczBobmZKMG14bTdyZnVpVHFaTXVSNjNvMnc1VmF3Wk9WOHgwRndGdFZvcEFocTY3M3V0NHdfVUl1bFRDM0RmLTNmcUJZRW5aaVFMeU1pU0Y3T2Zadkp3QURhUHl6UVFlT0t4dDlkcUQwOWNVTy12emQxSFNOSDBWTXQ4c0ExX2thaUZac1IzbWlHalQ4UERIaTEzZkxKT1JIN1pIcmpmYklocl9qOXdQcnJpSkV2MW13?oc=5"
+    },
+    {
+      "post_content": "Google’s Gemini 4 Carbon introduces an \"agent swarm\" capability that lets multiple specialized AI agents collaborate on a single task. Think of it as a team of micro‑assistants, each tuned for a specific function—search, summarization, data extraction, or code generation—working together under the umbrella of the Gemini model.\n\nPractical checklist to start using an agent swarm:\n1. Identify the sub‑tasks your workflow requires (e.g., data gathering, analysis, report drafting).\n2. Assign a dedicated agent to each sub‑task, selecting the appropriate prompt or tool configuration.\n3. Define a coordination protocol: decide how agents share intermediate results (e.g., via a shared context or message queue).\n4. Set a final aggregation step where a “master” agent synthesizes the outputs into the final product.\n5. Monitor the hand‑off points for errors and iterate on prompts.\n\nBy structuring work this way, you can leverage Gemini 4 Carbon’s swarm to break down complex problems, improve parallelism, and achieve more reliable results without writing extensive orchestration code.",
+      "image_prompt": "A sleek, modern illustration showing several AI agents, each represented by distinct icons (search, code, data, text), orbiting around a central Gemini 4 Carbon logo, connected by light lines to convey collaborative workflow.",
+      "key_topic": "Agent Swarm in Gemini 4 Carbon",
+      "source_article": "Google releases Gemini 4 Carbon with agent swarm feature - The Verge",
+      "source_url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOS1FMM2Rhc1RaOWNteEpIRDZLV2RNanAxOEtlY25LQ0tLejhndUQ1M1lpRFdXQjdkMnJ1SGxQSFhSODByVDhrWHp4dzdqM01pTzhTTVBpY2swLTZncWFJU1NaeXlTYk0tbFFzOVFISWFuamYzaXhiNlFfQmZoekk4YXkyaHdBRDhLMF9DSmo4UEZUV0pWcEVYZUNGci1iZw?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": []
+}
