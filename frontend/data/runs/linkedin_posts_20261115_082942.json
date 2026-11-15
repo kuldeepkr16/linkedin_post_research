@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-15T08:28:49.178477",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "OpenAI’s ChatGPT demonstrates how a large language model can be turned into a practical assistant through prompt engineering. By carefully shaping the input, developers can guide the model to produce reliable, task‑specific responses without modifying the underlying model. Below is a quick checklist for effective prompt design:\n\n1. Define the goal — state clearly what you need (e.g., summarize a report, generate code).\n2. Provide context — include relevant background information or examples.\n3. Use explicit instructions — command verbs such as “list,” “explain,” or “compare.”\n4. Set format expectations — specify output style, length, or structure (bullet points, JSON).\n5. Iterate and refine — test the prompt, review the result, and adjust wording.\n\nApplying this checklist, a developer can call the ChatGPT API hosted on Microsoft Azure to automate routine writing tasks, turning a vague request into a concise, formatted answer. The approach highlights how prompt engineering bridges powerful models and real‑world productivity.",
+      "image_prompt": "Illustration of a developer at a laptop, screen showing a code editor and a ChatGPT response pane, with OpenAI logo and Microsoft Azure cloud icons floating nearby, conveying integration of ChatGPT via Azure.",
+      "key_topic": "Prompt Engineering for ChatGPT",
+      "source_article": "OpenAI  ChatGPT, Sam Altman,  Microsoft - Britannica",
+      "source_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9Ba1QyTkx0cjRqbWxxX2ZPbmpGSmpBU2lkNEdpcXRWa09JNjRkZEswMk8zcFFDbFA1dGJ3LV9KUU96RkRJUjZ1WU1GWnNRVGw0?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "Example: A retail analyst needs yesterday's sales numbers every morning.\nThe data team built a nightly pipeline that extracts raw transaction logs,\ncleans the data,\nand loads a summary table.\nWhen the pipeline failed, the analyst got stale data and the business missed a promotion decision.\nWe solved this by treating the pipeline as code and adding DataOps practices with CI/CD.\n\nIn simple terms, DataOps is the discipline of applying DevOps ideas to data workflows.\nCI/CD means every change to the pipeline is automatically tested and deployed, just like software.\n\nKey points:\n- Version control all pipeline scripts and configuration files, so you can roll back easily.\n- Automated tests validate schema, data quality, and performance on each commit.\n- Deployments use containers or orchestration tools to ensure the same environment runs in dev, test, and prod.\n\nA common mistake is to automate only the code deployment and ignore data validation, which leads to silent data bugs.\n\nRule: Treat data pipelines as production code – write tests, version them, and let the CI/CD system promote only passing builds.",
+      "image_prompt": "A clean, modern data engineering workspace. A laptop screen shows a visual pipeline diagram with arrows, code snippets, and CI/CD icons (gear, checkmark). Nearby, a whiteboard displays version control symbols and test cases. Soft natural lighting, a coffee mug, and a subtle background of server racks. Style is realistic with a professional tech vibe, focusing on data pipelines and automation.",
+      "key_topic": "Data Engineering: DataOps and CI/CD for Data",
+      "topic": "Data Engineering",
+      "concept": "DataOps and CI/CD for Data",
+      "post_type": "concept"
+    }
+  ]
+}
