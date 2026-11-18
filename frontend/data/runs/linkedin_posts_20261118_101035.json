@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-11-18T10:09:53.361582",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "Lesson: When you combine a document store with a purpose‑built analytics engine,\n you can serve AI agents with low‑latency data.\n\nMongoDB just announced it is buying Firebolt,\n a real‑time analytics database designed for fast queries on large data sets.\n\nThe move shows that a single platform can handle both flexible document workloads\n and the heavy‑weight analytics that AI agents need.\n\nFor data engineers this means fewer moving parts,\n because you can keep raw JSON in MongoDB and let Firebolt run ad‑hoc analytics\n without exporting to a separate warehouse.\n\nThink of a use case where an AI chatbot answers product questions.\n The bot pulls the latest inventory from MongoDB,\n while Firebolt instantly aggregates sales trends to suggest alternatives.\n\nIf you are building pipelines today,\n consider exposing a Firebolt endpoint alongside your MongoDB collection.\n It lets you offload complex aggregations,\n reduces latency,\n and keeps the data model consistent.\n\nIn short, look for ways to pair a flexible store with a purpose‑built analytics engine\n to give AI services the speed and freshness they require.",
+      "image_prompt": "A sleek modern data center interior with glowing server racks, MongoDB and Firebolt logos displayed on large screens, abstract AI agent data streams linking the two systems, futuristic high‑tech atmosphere, professional vibrant color palette.",
+      "key_topic": "MongoDB acquisition",
+      "source_article": "MongoDB buys real-time analytics database Firebolt to serve AI agents - MLQ.ai",
+      "source_url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQdE5WN0dlNGpNLUFMWkVPWmdMUHlMNGF5bmtJRE1VWE1LaUlHUTg3NVdWOTQ1eFdJekI0OTRabU5zQUxQaDdQbUxLWkxvWVFSQ0RsMW5XeWRld3JKMlBuNnh4c21PZXlpalJULW1PNThSbkJ6NlpHOTh3Y1hUSTZWSk5PLTB5bEZwbklURDloOUs5Y0M0?oc=5"
+    },
+    {
+      "post_content": "Imagine a team needs to move a legacy SQL Server database to Aurora PostgreSQL.\nThe goal is to keep the same performance while avoiding a long downtime.\n\nOn the other hand,\nAWS Transform and Kiron promise a more controlled conversion.\nThey let you see schema gaps before you switch.\n\nMy take is that the new tools lower the guesswork.\nYou can start with a small test slice of tables.\n\nRun AWS Transform on the source database.\nIt creates a report of data type mismatches and index differences.\n\nUse Kiron to rewrite the most common queries.\nIt suggests PostgreSQL syntax that matches the original intent.\n\nLoad a subset of data into Aurora.\nRun the same workload and compare response times.\n\nIf the numbers are close,\nexpand the migration batch by batch.\n\nThe key is to treat the move as an iterative process,\nnot a single big cut‑over.\nThat reduces risk and keeps users happy.\n\nConsider trying the free assessment feature before you commit to a full migration.",
+      "image_prompt": "A sleek data engineering illustration showing a SQL Server logo on the left, an Aurora PostgreSQL logo on the right, with a smooth arrow flowing between them. Include subtle cloud symbols and a modern server rack background, clean professional style, no text overlay.",
+      "key_topic": "SQL Server to Aurora",
+      "source_article": "Fine-tune SQL Server to Aurora PostgreSQL conversions with AWS Transform and Kiro - Amazon Web Services AWS",
+      "source_url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQSnoyMC1WNFFtMXJsOE1DbjBzWUlGSV9DUF9va0I4UXFiZ0RqdlJXREQ3OUFtM3FUTm9iU2VWTldhVkUyTTRabm9QczJRRUZ4X2ZnamhHM0lqWmMwWU1aUG5TeU9aSDQ3TVRIb2M1bjFGdy1UUzRYWXU4bUY3dndvV3htZzBHVGxWekRIaTNhalZnOFBtOGVXWHJDaU5tR1hfQVFMU1UtTF9lMEh6R1RUSV9SdjU5bDhLUmczVUxUZENqYkRLR0tQaTd4ZVQwYk5p?oc=5"
+    },
+    {
+      "post_content": "Choosing the right LLM is more about systematic evaluation than chasing headlines.\n\nOpenAI released GPT‑6.2 Astra,\na model built to retake the performance lead from Claude Fable 5.2,\naccording to 9to5Google.\n\nThe lesson is that performance gaps are often narrow and depend on how you measure them.\n\nFact: Model size,\ntraining data,\nand inference optimizations all affect benchmark scores.\n\nInterpretation: A newer model does not automatically mean better results for your specific use case.\n\nA practical checklist helps you stay objective:\n\nTask definition – list the exact outputs you need.\n\nMetric selection – pick accuracy,\nlatency,\ncost,\nor safety metrics that matter.\n\nData similarity – ensure your evaluation data resembles production data.\n\nCompute budget – know the hardware and time you can afford.\n\nSecurity & compliance – verify the model’s data handling policies.\n\nRun a side‑by‑side test on a representative sample using the same prompts and hardware.\n\nRecord scores for each metric and compare trade‑offs.\n\nBy applying this framework, you can decide whether a headline‑grabbing release actually delivers value for your project.\n\nRecommendation: Before adopting any new model, run a quick internal benchmark using this checklist.",
+      "image_prompt": "A sleek futuristic AI research lab with glowing architecture diagrams on transparent screens. One diagram labeled GPT-6.2 Astra in bright blue, another smaller diagram labeled Claude Fable 5.2 in muted gray. Clean modern furniture, neutral color palette, realistic illustration style.",
+      "key_topic": "LLM evaluation framework",
+      "source_article": "OpenAI releases GPT-6.2 Astra to regain performance lead from Claude Fable 5.2 - 9to5Google",
+      "source_url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPVnlkYVdNeFRvMnZWTW0xbTJYUDB5Ry0zTnYtNTRwSE5FamZTNTF2ZllDVFZfS1JTVDM4Ty1NWVM3R3U4MnRHaTNsX0hLSDZuVk12V1Z0NTFxNzZEZURJVXNUdURQZW5IVHZkc1JBdVNCVEhJd0pRLURXRENhODJhMUVQQTNjM0NjdHp0b2YyM2wxZExzd3FNZVZsbTJRUTNmYzJxbkMwQXZTTXo1YUZHaW9icE9EcjRx?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "A frequent mistake is using ISNULL or = NULL directly in a WHERE clause,\n instead of handling missing values with COALESCE.\n\nExample scenario:\nYou have a table orders with a discount column that can be NULL.\nA naive query might write SELECT * FROM orders WHERE discount = NULL;\nThat condition never returns rows because NULL never equals anything.\nUsing COALESCE you can replace NULL with a default, like 0, and get correct results.\n\nSELECT order_id, COALESCE(discount, 0) AS discount_used\nFROM orders\nWHERE COALESCE(discount, 0) > 0;\n\nChecklist for proper NULL handling:\n- Identify columns that can be NULL and decide a sensible default.\n- Use COALESCE in SELECT lists to present non‑NULL values.\n- Apply COALESCE in WHERE clauses when you need to treat NULL as a specific value.\n\nCommon mistake to avoid: mixing ISNULL (SQL Server) with COALESCE logic across different databases, or forgetting that COALESCE stops at the first non‑NULL argument.\n\nRule of thumb: always think of the “missing” value as a regular value and explicitly replace it with COALESCE before any comparison.",
+      "image_prompt": "A clean, modern flat‑design illustration showing a database table icon with some cells highlighted as NULL, and a visual flow of the COALESCE function replacing those NULLs with a default value. Use pastel blues and greens, simple line art, and include a subtle caption \"COALESCE\" next to the flow arrow.",
+      "key_topic": "SQL: NULL Handling and COALESCE",
+      "topic": "SQL",
+      "concept": "NULL Handling and COALESCE",
+      "post_type": "concept"
+    }
+  ]
+}
