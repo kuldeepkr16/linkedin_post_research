@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-11-19T09:55:42.407230",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "Google’s Gemini 4 Neon offers Opus‑level coding performance while charging roughly 25 % less per token. For developers who integrate the model into IDE assistants or CI pipelines, the real benefit is the ability to produce high‑quality code without exhausting budget. Here’s a quick checklist to get the most out of Gemini 4 Neon’s token‑efficient design:\n\n1. **Write concise prompts** – Include only the essential description, language, and any required imports. Remove extraneous narrative.\n2. **Leverage few‑shot examples** – Provide one or two short code snippets that illustrate the desired pattern; the model can infer the rest, reducing token churn.\n3. **Use the stop sequence** – Define clear termination tokens (e.g., \"```\") so the model stops generating once the snippet is complete.\n4. **Batch requests** – Group related coding tasks into a single API call when possible, sharing context and avoiding repeated system prompts.\n5. **Monitor token usage** – Log prompt and completion token counts per request; adjust prompt length if costs rise.\n\nFollowing these steps lets you capitalize on Gemini 4 Neon’s performance while keeping API spend predictable.",
+      "image_prompt": "A professional illustration of a developer working at a laptop, with floating code snippets and small token icons representing API usage, and the Google Gemini 4 Neon logo subtly displayed in the background.",
+      "key_topic": "Token-efficient code generation with Gemini 4 Neon",
+      "source_article": "Google launches Gemini 4 Neon with Opus 5.5-level coding performance at 25 lower API token prices - VentureBeat",
+      "source_url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOTEZSUEtSV0dGT3g1ZXlGVW0xdjhfbDZnclc5RUdza3pibmNqaktCNUNOTkxuSzVabEppT2JZNEFMYzZmN3ZuNk9XNEl0cWZjTTdKQTNNUTBOZWJVNXFVc0ZyNEZrLVBjM2dLZExkc2lfbFpLQ3VmYmJLT1NRRzAyT2FJS1NRc3EybXpvdGZqTURJcFNZYVZQX2hqcVBQM08wMW5SUHVQU1VRNnBZcERuX3E3NnRSMXdQZTRmSEdIREZERzJXWlFNQ1RaV20?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "Here’s a quick example that shows why EXPLAIN ANALYZE matters.\n\nExample: you run a query that pulls recent orders.\n\nSELECT * FROM orders WHERE order_date > '2023-01-01';\n\nYou notice it takes longer than expected.\n\nRun EXPLAIN ANALYZE on the same query.\n\nEXPLAIN ANALYZE SELECT * FROM orders WHERE order_date > '2023-01-01';\n\nPostgreSQL returns the execution plan together with actual timing.\n\nNow you can see whether it used an index scan or fell back to a sequential scan.\n\nA few takeaways:\n\n- The “actual time” rows tell you how long each step really took,\n not just the planner’s estimate.\n\n- “Rows” and “Loops” let you spot hidden work,\n such as repeated scans inside nested loops.\n\n- The “Planning Time” line shows how much overhead the optimizer added.\n\nA common mistake is to read only the estimated cost and ignore the actual timing.\n\nThat can hide performance problems that only appear in real runs.\n\nRule of thumb: always compare estimated vs actual numbers,\n and focus on steps where the gap is large.\n\nWhat’s the biggest gap you’ve seen in a query plan?",
+      "image_prompt": "A clean, professional illustration of a modern office workspace. A laptop screen shows a PostgreSQL EXPLAIN ANALYZE output with highlighted actual time and rows. Nearby, a notebook with handwritten bullet points about query optimization. Soft natural lighting, neutral colors, realistic style, no people visible, focus on data engineering theme.",
+      "key_topic": "PostgreSQL: EXPLAIN ANALYZE Deep Dive",
+      "topic": "PostgreSQL",
+      "concept": "EXPLAIN ANALYZE Deep Dive",
+      "post_type": "concept"
+    },
+    {
+      "post_content": "One mistake I see often is leaving Adaptive Query Execution turned off in the Spark config even though the workload has many joins and skewed data.\n\nWhen Spark runs a job without AQE it sticks to the static shuffle partition count you set at the start.\n\nIf the data is uneven,\n some tasks become huge while others finish quickly.\n\nThe result is long runtimes and wasted resources.\n\nHere is a quick checklist to get AQE working right:\n\n- Enable AQE with spark.sql.adaptive.enabled true\n- Allow dynamic partition coalescing by setting spark.sql.adaptive.coalescePartitions.enabled true\n- Turn on skew join handling with spark.sql.adaptive.skewJoin.enabled true\n\nA common pitfall is enabling the first flag but forgetting the skew‑join flag,\n so Spark still falls back to the default join strategy on skewed keys.\n\nRemember: AQE works best when you let Spark rewrite the plan at runtime.\n\nRecommendation: add the three settings above to your spark-defaults.conf and compare the shuffle size before and after.",
+      "image_prompt": "A modern data engineer sitting at a desk with a laptop displaying Apache Spark UI, focusing on a graph that shows dynamic query optimization. In the background, a stylized illustration of a spark flame morphing into a flexible, adaptive network of nodes and arrows, representing Adaptive Query Execution. Clean, professional lighting, realistic style, subtle colors, no people other than the engineer, high detail, suitable for a LinkedIn educational post.",
+      "key_topic": "Apache Spark: Adaptive Query Execution (AQE)",
+      "topic": "Apache Spark",
+      "concept": "Adaptive Query Execution (AQE)",
+      "post_type": "concept"
+    }
+  ]
+}
