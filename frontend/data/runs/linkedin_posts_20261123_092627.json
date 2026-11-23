@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-11-23T09:25:21.814990",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "Too many banks are deploying AI chat agents without a clear governance framework.\nThe recent WIRED story shows several institutions pulling back after agents gave inconsistent advice,\ncausing compliance headaches.\n\nGovernance means setting rules for model selection,\n data quality,\n testing,\n and ongoing monitoring.\nThink of it as a checklist that lives alongside any new software release.\n\nA practical framework:\n\n1. Define the scope – what questions the agent may answer.\n\n2. Choose a model that meets regulatory standards for explainability.\n\n3. Build a test suite with real‑world banking queries and edge cases.\n\n4. Set up continuous monitoring for drift,\n bias,\n and error rates.\n\n5. Require human sign‑off before any change goes live.\n\nThese steps separate fact from guesswork.\nThe fact: unchecked agents can produce misleading information,\n as reported by WIRED.\nInterpretation: a governance layer prevents costly retractions and protects customers.\n\nStart by drafting a simple governance checklist for any AI pilot.\nIf you already have one, review it this week and add a monitoring clause.\nA disciplined approach turns a risky experiment into a reliable service.",
+      "image_prompt": "A modern bank operations floor with a frustrated customer service representative looking at a holographic AI chatbot interface, sleek corporate colors, realistic lighting, subtle tension in the scene, high detail, photorealistic style",
+      "key_topic": "AI governance",
+      "source_article": "Banks Have Had It Up to Here With Your AI Agent - WIRED",
+      "source_url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9pUy1ObG9vc0x4SEwtc2xRdFNzNldlekRzdXZhOTNWZnByOUh2TzRsUEI2dWhiM2Y3cmZEZGZrQ1RBLUx5VDhreGo5YW1GRVZtZnNlNmlRSjFvRlFkcnlwZFEtYnJFOUZ3SWxrYlZfWG5ka3c?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": []
+}
