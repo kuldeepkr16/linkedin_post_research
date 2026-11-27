@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-11-27T10:46:26.150688",
+  "ai_provider": "groq",
+  "news_posts": [
+    {
+      "post_content": "Relying on hype alone can steer you toward the wrong model.\n\nCathie Wood recently highlighted that OpenAI and Anthropic have \"stolen the show\",\n and she pointed out Dario Amodei’s more skeptical view.\n\nThe underlying issue is not which company is louder,\n but how we assess a model’s real fit for a task.\n\nEvaluation means defining the problem first,\n then picking metrics that matter,\n and testing the model under realistic conditions.\n\nA practical checklist looks like:\n • Define the exact business question.\n • Choose primary metrics (accuracy, latency, cost).\n • Select a baseline model for comparison.\n • Run stress tests on edge cases.\n • Review data provenance and bias risks.\n • Document governance and monitoring plans.\n\nFact: Wood’s comment reflects market excitement.\n Interpretation: Excitement can hide gaps in rigorous testing.\n\nSeparate the two when you make decisions.\n\nMy recommendation is to run this checklist before any multi‑million dollar commitment.",
+      "image_prompt": "A clean, modern illustration showing a balanced scale. On one side, icons representing popular AI models (e.g., a robot head for OpenAI, a stylized bee for Anthropic). On the other side, a checklist with tick marks. Background is muted corporate blue with subtle circuit patterns. Flat design, professional tone, no text overlay.",
+      "key_topic": "LLM evaluation checklist",
+      "source_article": "Cathie Wood Says OpenAI and Anthropic Have 'Stolen the Show,' but Criticizes Dario Amodei's 'Negative Hea - Benzinga",
+      "source_url": "https://news.google.com/rss/articles/CBMiqwJBVV95cUxPRDluMnZUUWo3UUpuWkJRUjdHLV9PSzV3bXZQSE5ybEs4aDdycEh4STFvcXRNcFBFLUVIMzJIR0JlRGUwVEh2Mk9lLUtsa3hiS2Y5QnRQeDZuZkhzTDB1Zmdvak1EUjJEaC1qRDVDVDZPODlBNHY5a1RITGVZSjYwX0ROVmgyVDB3RVJBV0RtRUtxbWt4X0RJV2dmaFNIUDdMTDA2RVROZW12ZlZEWUlwRmlsekpsYk5ZbTFydW01UlVCQUota1Q2S210aDVRNGxHSzNwNWp4cU5rX3dLUnJ1eXZxZ1VYNEt4ZnJfbEhSVDg0QVJvdHBLR2FsUkZXWjRMNklZYkxYV3gxdl9iamhad0tyVWlNS1JVOU5VRTNGZEdvX1RhZ2hiQ1VGNA?oc=5",
+      "post_type": "ai_news",
+      "content_category": "AI / LLM"
+    }
+  ],
+  "concept_posts": [
+    {
+      "post_content": "Imagine you have a script that fetches data from three web APIs.\nA synchronous version would call each endpoint one after another,\n waiting for each response before moving on.\nIf each call takes a second,\n the whole script runs for about three seconds.\n\nNow rewrite the same logic with async/await and asyncio.\nYou declare the fetching function with async def\n and use await when you call an aiohttp request.\nThe event loop schedules all three coroutines,\n so they run concurrently\n and the total time drops to roughly one second.\n\nKey points:\n- async defines a coroutine that can be paused and resumed.\n- await tells the event loop to switch to another task while waiting for I/O.\n- asyncio.run starts the loop and blocks until all coroutines finish.\n\nA common mistake is to mix blocking calls like time.sleep inside an async function.\nThat blocks the entire event loop and defeats the purpose of concurrency.\n\nTry converting a small part of your existing script to async and measure the difference.\nIf you see the runtime improve,\n keep the async style for any I/O‑bound work.",
+      "image_prompt": "",
+      "recovered": true,
+      "topic": "Python",
+      "concept": "async/await and Asyncio",
+      "post_type": "concept"
+    },
+    {
+      "post_content": "A common mistake when building a feature store is treating it like a simple data lake.\n\nYou end up mixing raw data,\n transformed features,\n and serving layers in one bucket.\n\nThat makes it hard to guarantee consistency between training and inference.\n\nExample: a retail team wants to serve recent purchase features to a fraud model.\n\nThey store raw transactions,\n aggregated spend,\n and the model‑ready feature set all together.\n\nWhen the model pulls data,\n it sometimes sees stale aggregates because the pipeline hasn’t refreshed them yet.\n\nA practical checklist can keep you on track:\n\n- Separate storage tiers for raw,\n processed,\n and online serving data.\n- Enforce schema and version control for every feature definition.\n- Automate validation that training and online feature values match.\n\nThe biggest pitfall to avoid is skipping feature versioning.\n\nIf you overwrite a feature without tracking its lineage,\n you lose reproducibility and model reliability.\n\nMy rule: always version both the data and the code that computes each feature,\n and never serve unvalidated data.\n\nWhat versioning strategy works best for your pipelines?",
+      "image_prompt": "A clean, professional illustration of a feature store architecture. Show three layers: raw data lake at the bottom, processed feature pipelines in the middle, and an online feature serving layer at the top. Include arrows indicating data flow from raw to processed to serving, with icons for version control and validation checkpoints. Use a modern, minimalistic style with a muted color palette suitable for a LinkedIn post.",
+      "key_topic": "Data Engineering: Feature Store Architecture",
+      "topic": "Data Engineering",
+      "concept": "Feature Store Architecture",
+      "post_type": "concept"
+    }
+  ]
+}
